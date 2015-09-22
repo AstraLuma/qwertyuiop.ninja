@@ -1,0 +1,27 @@
+---
+layout: post
+title: 'Leatherbound Pt1: Project Requirements'
+date: '2015-01-18T16:59:03-05:00'
+tags:
+- leatherbound
+tumblr_url: http://qwertyuiop.ninja/post/108481392734/leatherbound-pt1-project-requirements
+---
+<p>I&rsquo;m working on a new project which I thought I&rsquo;d turn into a series. It&rsquo;s nothing fancy or sophisticated. The code name is Leatherbound, and it&rsquo;s a diary/journal web app. This first post I just want to lay out the premise and some of the requirements and guidelines.</p>
+<ul><li>Easy to use</li>
+<li>Responsive design</li>
+</ul><p>Some of the decisions I&rsquo;ve made:</p>
+<ul><li>Using Material design: Because why not? At least it&rsquo;s not more bootstrap)</li>
+<li>Google AppEngine: scalable and free limits</li>
+<li>Google Cloud Storage: I think NoSQL will work better than SQL</li>
+<li>Python: Obviously</li>
+<li>Google Login</li>
+<li>Using Polymer (although that might not be mobile friendly? May ditch it)</li>
+</ul><p>Some features:</p>
+<ul><li>Optionally include events that have occurred since the last post (from Google Calendar)</li>
+<li>Full WYSIWYG (I&rsquo;m thinking inspired by <a href="http://hallojs.org/">hallo.js</a>, but probably re-implemented for material)</li>
+<li>Embedding media, including photos</li>
+</ul><p>Some other random details:</p>
+<ul><li>First screen after login is the new entry screen, and it should load fast. I figure its the #1 thing people do when they login.</li>
+<li>May look into Ember? The initial load time is a concern against the previous requirement and Polymer&rsquo;s already slow loading.</li>
+</ul><p>Next time, I&rsquo;ll be showing the prototype interface I&rsquo;ve got going so far.</p>
+<p>(See all the posts with the <a href="http://qwertyuiop.ninja/tagged/leatherbound">#leatherbound</a> tag.)</p>

@@ -1,0 +1,25 @@
+---
+layout: post
+title: Python Path conflict
+date: '2014-10-07T12:08:00-04:00'
+tags:
+- python
+- twisted
+tumblr_url: http://qwertyuiop.ninja/post/99408912804/python-path-conflict
+---
+<p>I have found an&hellip; odd collision of problems. I have the following packages installed:</p>
+<ul><li>Twisted</li>
+<li>Google protocol buffers (<code>google.protobuf</code>)</li>
+<li>The google package from PyPI (not affiliated)</li>
+</ul><p>Twisted provides an application system which lets you define <code>.tac</code> files and then have <code>twistd</code> handle a bunch of boiler plate (logging, background, reactor selection, etc).</p>
+<ol><li><code>twistd</code> is installed as a Python file to my PATH (ie <code>/usr/bin</code>)</li>
+<li>google installs <code>google.py</code> to my PATH (<code>/usr/bin</code>)</li>
+<li>When you start <code>twistd</code>, Python adds its directory (<code>/usr/bin</code>) to its path</li>
+<li>When my application imports <code>google.protobuf</code>, Python first imports <code>google</code></li>
+<li>Python finds <code>/usr/bin/google.py</code> and imports it as <code>google</code></li>
+<li>Python can&rsquo;t find <code>protobuf</code> in <code>google</code>.</li>
+</ol><p>So what went wrong?</p>
+<ul><li><code>twistd</code> was installed in such a way to allow unnecessary items into Python&rsquo;s path</li>
+<li>google installed a <code>.py</code> file into the PATH</li>
+<li>I wasn&rsquo;t using a virtual environment.</li>
+</ul><p>I&rsquo;m now considering the opinion that Python scripts should never be installed directly. Instead, they should be installed as <code>__main__</code> modules and a shell script of the form <code>exec python2/3 -m mypackage</code> is installed to your PATH.</p>

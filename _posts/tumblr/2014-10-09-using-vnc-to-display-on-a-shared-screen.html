@@ -1,0 +1,24 @@
+---
+layout: post
+title: Using VNC to Display on a Shared Screen
+date: '2014-10-09T14:05:36-04:00'
+tags:
+- Linux
+- VNC
+tumblr_url: http://qwertyuiop.ninja/post/99578945879/using-vnc-to-display-on-a-shared-screen
+---
+<p>At work, we have a big display (that will be) mounted on the wall and driven by a Beaglebone Black. We thought it&rsquo;d be cool to be able to show each other what we&rsquo;re doing by throwing it up on the screen.</p>
+<p>After some research, I decided to use <code>x11vnc</code>. I thought I&rsquo;d have to SSH in to the Beaglebone and set up a port forward. But then I read the man page for <code>x11vnc</code> and discovered VNC reverse connections.</p>
+<p>A VNC reverse connection is when the VNC client (the one displaying) listens and the VNC server (the one with the applications) connects to it. Using this, I could create a simple daemon with off-the-shelf programs and the tiniest of shell scripts.</p>
+<h3>Display</h3>
+<p>The Beaglebone Black already has an <code>.xsessionrc</code> on its user, so you just configure it to autostart X and then add <code>xvncviewer -listen 0 -fullscreen &amp;</code> to the end. Easy peasy.</p>
+<p>As a bonus, we set up a hostname and mDNS on the Beaglebone so that we don&rsquo;t have to deal with static IPs, servers, DNS entries, etc.</p>
+<h3>Clients</h3>
+<p>The client script is a bit more involved just because I went a little overboard on options to make sure weirdness didn&rsquo;t happen. We install this script on each machine we want to connect to the display.</p>
+<div class="gist"><a href="https://gist.github.com/astronouth7303/a9b7e9557d591038134c">https://gist.github.com/astronouth7303/a9b7e9557d591038134c</a></div>
+<p>Due to our individualized configurations, we have different options to send to <code>x11vnc</code>.</p>
+<ul><li>I have two displays, so I use <code>-clip xinerama0</code> and <code>-clip xinerama1</code> to switch between them.</li>
+<li>My coworker has a display of a higher resolution than the display mounted, so he uses <code>-scale 3/4</code> to</li>
+</ul><h3>Does it work?</h3>
+<p>It works well! Videos don&rsquo;t play well and there&rsquo;s a lot of tearing, but it works. Multiple users work fine, too; they just stack up in connection order, so the newest one is on top.</p>
+<p>In fact, the only changes I want to make are things like removal of the desktop environment on the display and the set-up of a default application.</p>

@@ -1,0 +1,14 @@
+---
+layout: post
+title: Extracting the "bug-eye" image from a Lytro file
+date: '2014-10-18T13:31:39-04:00'
+tags: []
+tumblr_url: http://qwertyuiop.ninja/post/100334216579/extracting-the-bug-eye-image-from-a-lytro-file
+---
+<p>So I have the raw database from the Mac version of the Lytro software. Each &ldquo;image&rdquo; is a directory with <code>dm.lfp</code>, <code>raw.lfp</code>, <code>stack.lfp</code>, <code>stacklq.lfp</code>, and <code>thumbnail.jpg</code></p>
+<p>The first thing I did was write a <a href="https://gist.github.com/astronouth7303/890ce225276ab4c43af8" title="mkgallery @ gist.github.com">script to make galleries</a> from the albums because UUIDs are incredibly unhelpful.</p>
+<p>Looking at the other files, you can use <a href="https://github.com/nrpatel/lfptools" title="lfptools @ github">lfpsplitter</a> to get the sections out of LFP files. (The format has been reversed, but I&rsquo;m not writing any software yet.)</p>
+<p>I looked over everything. <code>stack.lfp</code> contains some H264 images, but nothing terribly useful. (Nothing like the jpegs lfpsplitter was made for.) However, <code>raw.lfp</code> contains the raw pixel array from the CCD. And <code>raw2tiff</code> can read this. So you just run:</p>
+<div><code>raw2tiff -w 3280 -l 3280 -d short raw_imageRef0.raw raw.tiff</code></div>
+<p>And you get what I&rsquo;m calling the &ldquo;bug-eye&rdquo; view. It&rsquo;s still needs to be demosaiced  (the process of turning raw CCD pixels into RGB pixels) and the <a href="https://imgur.com/QKzWx70" title="Raw image.">bugeye thing</a> is a problem (microlens problems).</p>
+<p>But this solves one of the problems: turning the raw file off the camera into a usable array of pixels. Too bad I don&rsquo;t know how to get them off the camera or what to do with the pixels after I have them.</p>

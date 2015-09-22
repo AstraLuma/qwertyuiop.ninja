@@ -1,0 +1,16 @@
+---
+layout: post
+title: How to make a living photo?
+date: '2014-10-21T12:03:40-04:00'
+tags:
+- lytro
+- algorithms
+tumblr_url: http://qwertyuiop.ninja/post/100590805855/how-to-make-a-living-photo
+---
+<p>I have an idea for how to process the raw image:</p>
+<ol><li>Use the calibration information in each photo to make a model of the lenses</li>
+<li>Create a normal map of the raw image show where each ray came from</li>
+<li>Create a color map of the raw image for future demosaicing</li>
+<li>Project rays from the modeled CCD and ray trace it to your selected focal plane</li>
+<li>Apply some filter to demosaic and rasterize</li>
+</ol><p>I still need to process for a depth map. Maybe look for where rays converge?</p>

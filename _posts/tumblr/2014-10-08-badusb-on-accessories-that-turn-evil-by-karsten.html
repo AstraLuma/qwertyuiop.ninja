@@ -1,0 +1,23 @@
+---
+layout: post
+title: BadUSB - On Accessories that Turn Evil by Karsten Nohl + Jakob Lell
+date: '2014-10-08T11:08:00-04:00'
+tags:
+- BadUSB
+- USB
+tumblr_url: http://qwertyuiop.ninja/post/99488456964/badusb-on-accessories-that-turn-evil-by-karsten
+---
+<a href="https://www.youtube.com/watch?v=nuruzFqMgIw">BadUSB - On Accessories that Turn Evil by Karsten Nohl + Jakob Lell</a><br/><blockquote class="link_og_blockquote">
+<div>USB has become so commonplace that we rarely worry about its security implications. USB sticks undergo the occasional virus scan, but we consider USB to be otherwise perfectly safe - until now.</div>
+</blockquote>
+<p>This is the actual talk going into full detail on BadUSB. Some of the attacks they’ve discussed are meh, but some are horrific. It is important to note that BadUSB itself does not depend on any security holes; it is a systemic design vulnerability. None of the techniques I highlight use a security bug, either.</p>
+<p><strong>DISCLAIMER:</strong> I am not a security researcher or by any means a security expert. I am a software developer who&rsquo;s always been better at building things than breaking them.</p>
+<p>The two that really stuck in my mind are an Ethernet+DHCP attack as a stepping-stone for MITM, and fingerprinting attacks.</p>
+<p>They discuss an attack where a USB device acts as an network device and has its own DHCP server (there doesn’t need to be any real-world network connection on the device for this to work). When you plug it in, the Computer sees a network connection and autoconfigures it with DHCP. The device returns a DHCP advertisement with a public DNS server. This server is added to the system’s pool of DNS servers, regardless of interface it came from, allowing it to be used with any request. Of course, whence you’re using a malicious DNS server, that opens a pile of attack vectors.</p>
+<p>This DHCP attack could be mitigated by adding a verification to the DHCP daemon/service: Just check to see if the interface being configured has a route to the advertised DNS server. If not, don’t use that DNS server. Unless the device does have a network connection. Or it has the route and DNS server in the device as well.</p>
+<p>The second attack that caught my eye is a flash drive fingerprinting attack. (This probably only works on devices with significant storage.) A device uses the behavior of the USB host to fingerprint it. If it is an operating system, show a plain-jane flash drive. If it is a BIOS, show a bootable partition. BIOS boots this, and the malicious device installs a rootkit and boots the harddrive.</p>
+<p>This application of fingerprinting is of course mitigated by setting boot order correctly, especially since many BIOS now support selecting a boot device in a menu for one time.</p>
+<p>The real danger of fingerprinting is that it hides malicious interfaces from scanning. It would be easy to build a stateless stand-alone device that displays the enumeration of a USB device (Raspbery Pi Model A, PiTFT, and lsusb). But if that device is fingerprinting hosts, this scan may or may not show anything out of the ordinary.</p>
+<p>The biggest WTF in all this, of course, is why on earth the firmware for a USB device is updatable over USB in the first place? We have test points and JTAG and ICSP for a reason. Karsten &amp; Jakob in fact recommend that USB-based reflashing be disabled at the factory.</p>
+<p>For extra fun, reframe that entire discussion in the context of Android phones. I don’t know if Android applications have the ability to define new device profiles for the phone/tablet on unrooted devices. If they do, then all an attacker has to do is get their application on the phone and wait for the user to plug it in to a computer.</p>
+<p>The <a href="https://srlabs.de/badusb/">BadUSB website</a> has a proof-of-concept that runs on a rooted Android phone. It demonstrates an attack where the phone runs a DNS server, allowing DNS-based MITM.</p>
