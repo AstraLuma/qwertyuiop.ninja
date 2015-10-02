@@ -6,6 +6,9 @@ tags:
 - Linux
 - VNC
 tumblr_url: http://qwertyuiop.ninja/post/99578945879/using-vnc-to-display-on-a-shared-screen
+redirect_from:
+- /post/99578945879/using-vnc-to-display-on-a-shared-screen
+- /post/99578945879
 ---
 <p>At work, we have a big display (that will be) mounted on the wall and driven by a Beaglebone Black. We thought it&rsquo;d be cool to be able to show each other what we&rsquo;re doing by throwing it up on the screen.</p>
 <p>After some research, I decided to use <code>x11vnc</code>. I thought I&rsquo;d have to SSH in to the Beaglebone and set up a port forward. But then I read the man page for <code>x11vnc</code> and discovered VNC reverse connections.</p>
