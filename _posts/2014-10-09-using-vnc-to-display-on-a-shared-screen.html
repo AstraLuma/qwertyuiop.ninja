@@ -7,8 +7,8 @@ tags:
 - VNC
 tumblr_url: http://qwertyuiop.ninja/post/99578945879/using-vnc-to-display-on-a-shared-screen
 redirect_from:
-- /post/99578945879/using-vnc-to-display-on-a-shared-screen
-- /post/99578945879
+- /post/99578945879/using-vnc-to-display-on-a-shared-screen/
+- /post/99578945879/
 ---
 <p>At work, we have a big display (that will be) mounted on the wall and driven by a Beaglebone Black. We thought it&rsquo;d be cool to be able to show each other what we&rsquo;re doing by throwing it up on the screen.</p>
 <p>After some research, I decided to use <code>x11vnc</code>. I thought I&rsquo;d have to SSH in to the Beaglebone and set up a port forward. But then I read the man page for <code>x11vnc</code> and discovered VNC reverse connections.</p>
@@ -18,7 +18,7 @@ redirect_from:
 <p>As a bonus, we set up a hostname and mDNS on the Beaglebone so that we don&rsquo;t have to deal with static IPs, servers, DNS entries, etc.</p>
 <h3>Clients</h3>
 <p>The client script is a bit more involved just because I went a little overboard on options to make sure weirdness didn&rsquo;t happen. We install this script on each machine we want to connect to the display.</p>
-<div class="gist"><a href="https://gist.github.com/astronouth7303/a9b7e9557d591038134c">https://gist.github.com/astronouth7303/a9b7e9557d591038134c</a></div>
+<script src="https://gist.github.com/astronouth7303/a9b7e9557d591038134c.js"></script>
 <p>Due to our individualized configurations, we have different options to send to <code>x11vnc</code>.</p>
 <ul><li>I have two displays, so I use <code>-clip xinerama0</code> and <code>-clip xinerama1</code> to switch between them.</li>
 <li>My coworker has a display of a higher resolution than the display mounted, so he uses <code>-scale 3/4</code> to</li>
