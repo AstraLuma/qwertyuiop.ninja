@@ -18,7 +18,7 @@ redirect_from:
 <p>As a bonus, we set up a hostname and mDNS on the Beaglebone so that we don&rsquo;t have to deal with static IPs, servers, DNS entries, etc.</p>
 <h3>Clients</h3>
 <p>The client script is a bit more involved just because I went a little overboard on options to make sure weirdness didn&rsquo;t happen. We install this script on each machine we want to connect to the display.</p>
-<script src="https://gist.github.com/astronouth7303/a9b7e9557d591038134c.js"></script>
+{% gist astronouth7303/a9b7e9557d591038134c %}
 <p>Due to our individualized configurations, we have different options to send to <code>x11vnc</code>.</p>
 <ul><li>I have two displays, so I use <code>-clip xinerama0</code> and <code>-clip xinerama1</code> to switch between them.</li>
 <li>My coworker has a display of a higher resolution than the display mounted, so he uses <code>-scale 3/4</code> to</li>
