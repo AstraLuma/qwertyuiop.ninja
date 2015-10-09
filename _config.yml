@@ -3,3 +3,4 @@ gems:
 - jekyll-redirect-from
 - jekyll-sitemap
 - jekyll-feed
+paginate: 10

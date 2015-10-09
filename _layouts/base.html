@@ -26,7 +26,7 @@
                 <div id="stuck">
                     <a href="/"><div id="icon" class="inversePair" style="background: url('/assets/avatar.64.png')"></div></a>
                     <div id="mask" class="inversePair">
-                        <span class="description">Good with a keyboard and fluent in gibberish.\</span>
+                        <span class="description">Good with a keyboard and fluent in gibberish.</span>
                     </div>
                     <div class="unitWrap">
                         <div id="pages" class="unit">
@@ -58,17 +58,6 @@
                 <div class="autopagerize_page_element" id="posts">
                 {{content}}
                 </div>
-
-                {% if paginator %}
-                    <div class="pagination">
-                    {% if paginator.previous_page_path %}
-                        <a href="{{ paginator.previous_page_path }}" class="prevPage">Previous</a>
-                    {% endif %}
-                    {% if paginator.next_page_path %}
-                        <a href="{{ paginator.next_page_path }}" class="nextPage">Next</a>
-                    {% endif %}
-                    </div>
-                {% endif %}
 
             </div>
         </div>

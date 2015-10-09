@@ -655,7 +655,7 @@ article.commentBox { margin-top: -42px; }
 	color: white;
 	position: relative;
 }
-.nextPage:after {
+.nextPage::after {
 		content: " "; 
 		display: block; 
 		width: 0; 
@@ -669,7 +669,7 @@ article.commentBox { margin-top: -42px; }
 		left: 100%;
 		z-index: 2; 
 	}
-.prevPage:before {
+.prevPage::before {
 		content: " "; 
 		display: block; 
 		width: 0; 

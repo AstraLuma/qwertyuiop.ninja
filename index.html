@@ -1,8 +1,7 @@
 ---
-paginate: 10
 layout: base
 ---
-{% for post in site.posts %}
+{% for post in paginator.posts %}
 <article class="text">
   <div class="date"><a href="{{post.url}}">Posted {{post.date}}</a></div>
   <div class="postInner">
@@ -13,3 +12,12 @@ layout: base
   </div>
 </article>
 {% endfor %}
+
+<div class="pagination">
+{% if paginator.previous_page_path %}
+    <a href="{{ paginator.previous_page_path }}" class="prevPage">Previous</a>
+{% endif %}
+{% if paginator.next_page_path %}
+    <a href="{{ paginator.next_page_path }}" class="nextPage">Next</a>
+{% endif %}
+</div>
