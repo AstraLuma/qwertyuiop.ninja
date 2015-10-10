@@ -79,7 +79,7 @@
             $('#social .googleplus').attr('href',ggShare);
             $('#social .stumble').attr('href',stShare);
         </script>
-        <script type="text/javascript">
+        <script type="text/javascript" defer>
           //<![CDATA[
           (function() {
             var links = document.getElementsByTagName('a');
@@ -89,7 +89,7 @@
                 query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
               }
             }
-            document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/qwertyuiopninja/get_num_replies.js' + query + '"></' + 'script>');
+            document.write('<script async charset="utf-8" type="text/javascript" src="http://disqus.com/forums/qwertyuiopninja/get_num_replies.js' + query + '"></' + 'script>');
           })();
         //]]>
         </script>
@@ -104,6 +104,5 @@
     
     </script>
 
-        <iframe id="my-like-frame" style="display:none;"></iframe>
     </body>
 </html>
