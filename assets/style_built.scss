@@ -15,7 +15,6 @@ $post-audio: #FF9E28;
 $post-video: #F42D33;
 $body: 'ge_geek', Arial, helvetica, sans-serif;
 $details: Arial, Helvetica, sans-serif;
-$background: url(/assets/);
 
 @font-face {
     font-family: 'ge_geek';
@@ -51,7 +50,7 @@ $background: url(/assets/);
 /* global */
 *{margin:0;padding:0;}
 body {
-	background: url(/assets/geek_bg.gif), 
+	background: url(/assets/geek_bg.png), 
 				url(/assets/ge_tile.jpg);
 	background-position: top center, top;
 	background-repeat: repeat-y, repeat;
@@ -701,9 +700,6 @@ article.commentBox { margin-top: -42px; }
 
 
 
-body { 
-    background: #FFF url(/assets/geek_bg.gif) top left fixed repeat;
-}
 a, .sound .postInner { color: #FFF; }
 .link .postInner h3 a { border-color: #FFF; }
 #search, .noteCount, .date, .tags li, .postBase .source { font-family: Arial, Helvetica, sans-serif; }
