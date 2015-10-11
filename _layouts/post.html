@@ -29,6 +29,15 @@ layout: base
     </div>
 </article>
 
+<div class="pagination">
+{% if page.previous %}
+    <a href="{{ page.previous.url }}" class="prevPage">Previous</a>
+{% endif %}
+{% if page.next %}
+    <a href="{{ page.next.url }}" class="nextPage">Next</a>
+{% endif %}
+</div>
+
 <article class="commentBox"><div id="disqus_thread"></div></article>
 <script type="text/javascript" src="http://disqus.com/forums/qwertyuiopninja/embed.js"></script>
 <noscript><a href="http://qwertyuiopninja.disqus.com/?url=ref">View the discussion thread</a></noscript>
