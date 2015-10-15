@@ -5,5 +5,13 @@
 			"path": ".",
 			"folder_exclude_patterns": ["_site"]
 		}
-	]
+	],
+	"settings":
+    {
+        "Jekyll":
+        {
+            "posts_path": "/home/astronouth7303/code/qwertyuiop.ninja/_posts",
+            "drafts_path": "/home/astronouth7303/code/qwertyuiop.ninja/_drafts",
+        }
+    }
 }
