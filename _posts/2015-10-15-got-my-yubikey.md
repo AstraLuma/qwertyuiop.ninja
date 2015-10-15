@@ -5,7 +5,7 @@ categories: []
 tags: yubioco, yubikey, security, u2f
 ---
 
-So a little while ago, Yubico and GitHub had a promotion where you could get one of the [YubiKey U2F](https://www.yubico.com/products/yubikey-hardware/fido-u2f-security-key/) devices for $5.
+So a little while ago, Yubico and GitHub had a [promotion](https://www.yubico.com/github-special-offer/) where you could get one of the [YubiKey U2F](https://www.yubico.com/products/yubikey-hardware/fido-u2f-security-key/) devices for $5.
 
 I naturally jumped on this like the west michigander I am.
 
