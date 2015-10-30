@@ -56,14 +56,20 @@
             <div class="colRight">
                 
                 <div class="autopagerize_page_element" id="posts">
+                {% if page.scripted %}
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.1/modernizr.min.js"></script>
+                {% endif %}
                 {{content}}
                 </div>
 
             </div>
         </div>
 
+        {% unless page.scripted %}
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.1/modernizr.min.js"></script>
+        {% endunless %}
         <script src="/assets/geek_built.js"></script>
         <script src="/assets/writecapture.js"></script>
          

@@ -48,7 +48,7 @@ $details: Arial, Helvetica, sans-serif;
 }
 
 /* global */
-*{margin:0;padding:0;}
+*{margin:0;padding:0;} /* TODO: Get rid of this */
 body {
 	background: url(/assets/geek_bg.png), 
 				url(/assets/ge_tile.jpg);
@@ -770,6 +770,12 @@ ul > li {
 h4 {
     margin-bottom: 1em;
 }
+
+h2 {
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+}
+
 /* And add some flair to it. */
 blockquote::before {
   color: #ccc;
@@ -782,6 +788,10 @@ blockquote::before {
 }
 blockquote > *:first-child {
     display: inline;
+}
+h2 {
+	background: #333;
+	padding: 0.83em;
 }
 /* Hide FOUC for gist embedding */
 .gist > a {
