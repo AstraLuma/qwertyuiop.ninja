@@ -4,3 +4,10 @@ gems:
 - jekyll-sitemap
 - jekyll-feed
 paginate: 10
+
+name: qwertyuiop.ninja
+description: Good with a keyboard and fluent in gibberish
+author:
+  name: Jamie
+  email: me@astro73.com
+  uri: http://astro73.com/
