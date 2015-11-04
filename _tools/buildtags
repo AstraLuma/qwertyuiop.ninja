@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+import os
+import yaml
+
+PROJECT_DIR = os.path.join(os.path.dirname(__file__), '..')
+
+
+def loadfile(fn):
+    """
+    Load the given file name/object and return the (front matter, contents).
+
+    Will always return a tuple of the correct type. If there is no front 
+    matter, an empty dict is returned.
+    """
+    if isinstance(fn, str):
+        fo = open(fn)
+    else:
+        fo = fn
+    yml = {}
+    contents = ""
+
+    ln = next(fo)
+    if ln == '---':
+        ymlbuf = ''
+        for ln in fo:
+            if ln == '---':
+                break
+            ymlbuf += ln
+        yml = yaml.safe_load(ymlbuf)
+    else:
+        contents = ln
+
+    for ln in fo:
+        contents += ln
+
+    return yml, contents
+
+
+def files(path):
+    for dirname, _, files in os.walk(path):
+        for fn in files:
+            yield os.path.join(dirname, files)
+
+filesbytag = {}
+
+for fn in files(os.path.join(PROJECT_DIR, '_posts')):
+    front, _ = loadfile(fn)
+    tags = front.get('tags')
+    if tags:
+        if isinstance(tags, str):
+            tags = tags.split(',')
+        tags = [t.strip() for t in tags]
+
+        for tag in tags:
+            if tag not in filesbytag:
+                filesbytag[tag] = []
+            filesbytag[tag].append((fn, front))
+
+# TODO: Produce data file
+# content, tile, excerpt, url, date, id, categories, tags, path
