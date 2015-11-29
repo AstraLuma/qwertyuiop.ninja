@@ -16,7 +16,7 @@
         <meta name="description" content="Good with a keyboard and fluent in gibberish"/>
         
         <link href='/assets/style_built.css' rel='stylesheet' type='text/css'>
-        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/1.5.2/assets/css/emojione.min.css" />
 </head>
 
     <body>
@@ -46,7 +46,8 @@
                             </div>
                         </div>
                         <div id="about" class="unit">
-                            Background Illustrations provided by: <a href="http://edison.rutgers.edu/">http://edison.rutgers.edu/</a>
+                            <div>Background Illustrations provided by <a href="http://edison.rutgers.edu/">edison.rutgers.edu</a></div>
+                            <div>Emoji provided free by <a href="http://emojione.com">Emoji One</a></div>
                         </div>
                     </div>
                     <div id="baseCircle"></div>
@@ -72,7 +73,7 @@
         {% endunless %}
         <script src="/assets/geek_built.js"></script>
         <script src="/assets/writecapture.js"></script>
-         
+        <script src="//cdn.jsdelivr.net/emojione/1.5.2/lib/js/emojione.min.js"></script>
         <script>
             var url = window.location.href
             ,   fbShare = 'http://www.facebook.com/share.php?u='+url+'&title={{ page.title }}'
