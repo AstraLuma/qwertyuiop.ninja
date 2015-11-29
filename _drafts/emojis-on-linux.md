@@ -11,6 +11,7 @@ The changes to this were surprisingly simple. I just installed `ibus` from apt, 
 into the standard Xsession startup. Install UniEmoji, restart, and bam! So far, dmenu and Sublime don't
 seem to use ibus at all (dmenu is no surprise, Sublime is a disappointment), and Smuxi had odd issues with it.
 
-Smuxi would allow the UniEmoji input dialog to pop open, but hitting enter to actually insert the text fails.
+Smuxi would allow the UniEmoji input dialog to pop open, but hitting enter to actually insert the text 
+fails. The root cause is that Smuxi swallows the key press event, which is what UniEmoji is listening for.
 
 (TODO: How this got fixed.)
