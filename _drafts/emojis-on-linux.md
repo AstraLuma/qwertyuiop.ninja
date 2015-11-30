@@ -28,3 +28,5 @@ implemented in FreeType. But either their reference font generators are broken, 
 ![FruityGirl preview](/assets/posts/fruitygirl.png "Preview by Gnome Font Viewer")
 
 But as long as you have the Symbola font installed, Unicode Emojis will probably render.
+
+Until next time, 👋
