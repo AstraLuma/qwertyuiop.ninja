@@ -19,7 +19,7 @@ fails. The root cause is that Smuxi swallows the key press event, which is what 
 fix for this is surprisingly complex and non-trivial. And unfortunately, the explaination of which involves
 a background in GTK. Especially since I've looked at the source code for 3 different projects, including GTK
 itself, in order to understand the issue. This will be the subject of a future blog post, as there doesn't seem
-to be an answer on the "right" way to do this.
+to be an answer on the "right" way to do this, and I don't want this to be a GTK post.
 
 In addition, there is [a standard](http://google-opensource.blogspot.com/2013/05/open-standard-color-font-fun-for.html)
 for including full-color bitmaps in OTF/TTF fonts produced by Google, accepted by Microsoft, and supposedly 
