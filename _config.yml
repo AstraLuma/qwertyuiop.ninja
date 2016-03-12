@@ -13,3 +13,6 @@ author:
   name: Jamie
   email: me@astro73.com
   uri: http://astro73.com/
+defaults:
+- values:
+    articleclass: text
