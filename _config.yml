@@ -5,6 +5,7 @@ gems:
 - jekyll-feed
 - jekyll-paginate
 - jekyll-gist
+- jekyll-seo-tag
 paginate: 10
 
 name: qwertyuiop.ninja
@@ -16,3 +17,16 @@ author:
 defaults:
 - values:
     articleclass: text
+
+twitter:
+  username: QwertyuiopNinja
+facebook:
+  publisher: https://www.facebook.com/qwertyuiopninja/
+author:
+  twitter: astronouth7303
+social:
+  links:
+    - https://www.facebook.com/qwertyuiopninja/
+    - https://plus.google.com/+QwertyuiopNinja
+    - https://twitter.com/QwertyuiopNinja
+logo: /assets/avatar.128.png
