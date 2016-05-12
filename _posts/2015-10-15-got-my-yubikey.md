@@ -15,9 +15,9 @@ They do seem to fail to mention that on Linux, you have to install a udev rule:
 
 {% gist astronouth7303/31778987657c0e61820e yubico.rules %}
 
-If you don't, you'll get really weird errors, depending on what you're using (and none of them will "permission denied"). So if you're attemtpting to use U2F on Linux and it doesn't seem to be working, check your udev rules.
+If you don't, you'll get really weird errors, depending on what you're using (and none of them will be "permission denied"). So if you're attemtpting to use U2F on Linux and it doesn't seem to be working, check your udev rules.
 
-After I fixed that, everything worked out of the box as advertised. I got it hooked up to Google, GitHub, and Dropbox without any issues. They also have a [PAM module](https://github.com/Yubico/pam-u2f) available (which is in the Debian repositories) for local authentication, and their are third-party modules for disk encryption.
+After I fixed that, everything worked out of the box as advertised. I got it hooked up to Google, GitHub, and Dropbox without any issues. They also have a [PAM module](https://github.com/Yubico/pam-u2f) available (which is in the Debian repositories) for local authentication, and there are third-party modules for disk encryption.
 
 Of course, I would heartily endorse buying a second key, hooking it up to everything, and then stashing it in a safe place (maybe next to those 2-factor recovery codes?). If you loose your primary key, you could be locked out of everything.
 
