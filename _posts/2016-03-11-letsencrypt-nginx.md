@@ -187,6 +187,8 @@ The Let's Encrypt program does the right thing in that it checks the state of yo
 0       0       *       *       4       openssl dhparam -out /usr/local/etc/nginx/dhparams.pem 2048 && service nginx reload
 {% endhighlight %}
 
+**EDIT**: The Lets Encrypt (now called certbot) will _not_ prerenew your certificates. Once a week is not sufficient. I'm currently having it check daily.
+
 The other job just refreshes the Diffie-Helmen parameters we made in step 3. I haven't seen any recommendations to do this, but I figure it can't hurt.
 
 (I'm not certain reloading Nginx causes it to reread SSL keys and such, or if it does it automatically. I guess I'll find out in two and a half months.)
