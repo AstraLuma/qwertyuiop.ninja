@@ -10,6 +10,8 @@ I set up a private [GOGS](https://gogs.io/) server, and decided to pull the stop
 
 Note: I did this on a FreeBSD system, but nothing in here is FreeBSD-specific.
 
+**EDIT**: `letsencrypt` is now [Certbot](https://certbot.eff.org/). But this change hasn't migrated to FreeBSD yet, so this guide hasn't been updated.
+
 Additional Note: You do have to do these in order.
 
 You can follow along with my [gist](https://gist.github.com/astronouth7303/a11ec7009278ad65b53e).
