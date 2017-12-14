@@ -1,6 +1,6 @@
 ---
 layout: post-text
-title: Like  Alice Tumbling Down the Rabbit Hole
+title: Like Alice Tumbling Down the Rabbit Hole
 ---
 
 I've done developer tooling as part of my various jobs for years: I needed a tool, so I wrote one. My current job is the first time I've done it as a job, though. By which I mean that the majority of my job is creating, maintaining, and improving systems in support of our development.
