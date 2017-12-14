@@ -1,12 +1,14 @@
-So, as a precurser to discussing how I've done DevOps, I feel like I should layout what I think DevOps is and the goals I'm trying to accomplish.
+I've done developer tooling as part of my various jobs for years: I needed a tool, so I wrote one. My current job is the first time I've done it as a job, though. By which I mean that the majority of my job is creating, maintaining, and improving systems in support of our development.
 
-* Developer visibility into operational realities (metrics, logging, etc)
-* Developer agency in operational solutions
+So, there I was, having to build systems for version control, testing, deployment, server management, etc, etc, etc, here's what I'm thinking:
 
-Leads to:
+* I don't like doing ops that much
+* I really, really like sleep
+* We have more infrastructure than I want to personally be responsible for
+* I really don't like being a sysadmin
 
-* Configuration as code and applying developer tools (eg, CI) to operationals
+So the goal being to build systems that don't put me in control of the applications and the running of them, but to enable the rest of engineering to do so. I don't want to deal with operational issues; I want systems to surface those issues to the team and the team deals with them. I don't want to be vaguely on-call; I want to build an explicit on-call rotation or (better yet!) have the self-healing systems deal with problems for me.
 
-So:
+I don't want to own production or infrastructure; I want to enable my team to take ownership of it.
 
-* Automation, repeatability, CD
+Oh hey, that's DevOps right there, isn't it?
