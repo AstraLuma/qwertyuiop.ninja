@@ -12,3 +12,5 @@ So the goal being to build systems that don't put me in control of the applicati
 I don't want to own production or infrastructure; I want to enable my team to take ownership of it.
 
 Oh hey, that's DevOps right there, isn't it?
+
+So I do DevOps now. I guess I'm a buzzword.
