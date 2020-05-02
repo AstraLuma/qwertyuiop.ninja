@@ -141,15 +141,6 @@ img { border: none; }
 	background: #333;
 }
 
-	/* Firefox jagged circle fix for cutout */
-.cssgradients #half-circle {
-	position: absolute;
-	margin-left: 40px;
-	top: 0px;
-	width: 31px;
-	height: 64px;
-	overflow: hidden;
-}
 .cssgradients #edge-top, 
 .cssgradients #edge-bottom {
 	z-index: 1;
