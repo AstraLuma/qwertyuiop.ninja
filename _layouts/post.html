@@ -17,13 +17,6 @@ seo:
         {% endfor %}
         </ul>
         {% endif %}
-
-        {% if page %}
-        <div class="socialButtons">
-            <a href="http://www.facebook.com/share.php?u={{ page.url | absolute_url | cgi_escape}}&title={{ page.title | cgi_escape }}" class="facebook">&nbsp;</a>
-            <a href="http://twitter.com/home?status={{ page.title | cgi_escape }}+{{ page.url | absolute_url | cgi_escape}}+@astraluma" class="twitter">&nbsp;</a>
-        </div>
-        {% endif %}
     </div>
 </article>
 
