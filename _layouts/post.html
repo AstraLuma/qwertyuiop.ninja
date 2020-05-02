@@ -20,12 +20,8 @@ seo:
 
         {% if page %}
         <div class="socialButtons">
-            <div class="my-like" data-reblog="{ReblogURL}" data-id="{PostID}" title="Like">&nbsp;</div>
-            <a href="{ReblogURL}" class="reblog">&nbsp;</a>
-            <a href="http://www.facebook.com/share.php?u={ShortURL}&title={{ page.title }}" class="facebook">&nbsp;</a>
-            <a href="http://twitter.com/home?status={{ page.title }}+{ShortURL}+@qninja" class="twitter">&nbsp;</a>
-            <a href="https://plus.google.com/share?url={ShortURL}" class="googleplus">&nbsp;</a>
-            <a href="http://www.stumbleupon.com/submit?url={ShortURL}&title={{ page.title }}" class="stumble">&nbsp;</a>
+            <a href="http://www.facebook.com/share.php?u={{ page.url | absolute_url | cgi_escape}}&title={{ page.title | cgi_escape }}" class="facebook">&nbsp;</a>
+            <a href="http://twitter.com/home?status={{ page.title | cgi_escape }}+{{ page.url | absolute_url | cgi_escape}}+@astraluma" class="twitter">&nbsp;</a>
         </div>
         {% endif %}
     </div>
