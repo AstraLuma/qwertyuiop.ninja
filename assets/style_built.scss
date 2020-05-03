@@ -1,10 +1,19 @@
 ---
 ---
-$background: #FFF;
-$box-background: #333;
+/* Palette: https://www.colourlovers.com/palette/4717663/kit_013 */
+$palette_last: #FFCCC3;
+$palette_cream: #FFF6D6;
+$palette_bebe: #654F41;
+$palette_drop: #F3E1CD;
+$palette_soft: #F9D3BE;
+
+$background: $palette_cream;
+$box-background: $palette_bebe;
 $text: #FFF;
-$post-text: #3976B1;
-$post-text-link: #66B5E0;
+
+/* Header colors by post type */
+$post-text: $palette_last;
+$post-text-link: invert($post-text);
 $post-photo: #F42D33;
 $post-quote: #7AB762;
 $post-answer: #7AB762;
@@ -13,36 +22,38 @@ $post-chat: #F42D33;
 $post-chat-bubble: #FFFFFF;
 $post-audio: #FF9E28;
 $post-video: #F42D33;
+
+
 $body: 'ge_geek', Arial, helvetica, sans-serif;
 $details: Arial, Helvetica, sans-serif;
 
 @font-face {
     font-family: 'ge_geek';
-    src: url(/assets/ge_geek-bold.woff) format('woff');
+    src: url(/assets/fonts/ge_geek-bold.woff) format('woff');
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
     font-family: 'ge_geek';
-    src: url(/assets/ge_geek-italic.woff) format('woff');
+    src: url(/assets/fonts/ge_geek-italic.woff) format('woff');
     font-weight: normal;
     font-style: italic;
 }
 @font-face {
     font-family: 'ge_geek';
-    src: url(/assets/ge_geek.woff) format('woff');
+    src: url(/assets/fonts/ge_geek.woff) format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'ge_geek_cond';
-    src: url(/assets/ge_geek_cond-italic.woff) format('woff');
+    src: url(/assets/fonts/ge_geek_cond-italic.woff) format('woff');
     font-weight: normal;
     font-style: italic;
 }
 @font-face {
     font-family: 'ge_social';
-    src: url(/assets/ge_social.woff) format('woff');
+    src: url(/assets/fonts/ge_social.woff) format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -50,13 +61,10 @@ $details: Arial, Helvetica, sans-serif;
 /* global */
 *{margin:0;padding:0;} /* TODO: Get rid of this */
 body {
-	background: url(/assets/geek_bg.png), 
-				url(/assets/ge_tile.jpg);
+	background: $background;
 	background-position: top center, top;
 	background-repeat: repeat-y, repeat;
 	font-family: $body;
-	-webkit-font-smoothing: antialiased;
-	font-smooth:always;
 	font-size: 13pt;
 	color: #fff;
 	min-width: 1130px;
@@ -99,79 +107,14 @@ img { border: none; }
 	width: 64px;
 	height: 64px;
 	overflow: hidden;
-	background: #333;
+	background: $box-background;
 	z-index: 1;
 }
 #mask {
 	width: 165px;
 	min-height: 67px;
 	overflow: hidden;
-	background: #333;
-}
-
-	/* logo & semi circle cutout */
-.cssgradients #icon {
-	width: 64px;
-	height: 64px;
-	border-radius: 64px;
-	background: transparent;
-	overflow: hidden;
-}
-.cssgradients #mask {
-	width: 165px;
-	min-height: 67px;
-	padding-left: 26px;
-	margin-left: -26px;
-	background: transparent;
-	background-image: -moz-radial-gradient(-10px 32px, circle closest-corner, transparent 0, transparent 36px, #333 37px, #333 38px);
-	background-image: -webkit-radial-gradient(-10px 32px, circle closest-corner, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, #333 37px, #333 38px);
-	background-image: -ms-radial-gradient(-10px 32px, circle closest-corner, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, #333 37px, #333 38px);
-	background-image: -o-radial-gradient(-10px 32px, circle closest-corner, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, #333 37px, #333 38px);
-	background-image: radial-gradient(-10px 32px, circle closest-corner, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, #333 37px, #333 38px);
-	box-shadow: 1px 1px 3px rgba(50, 50, 50, 0.75);
-	overflow: hidden;
-}
-.cssgradients #baseCircle {
-	float: left;
-	clear: both;
-	width: 28px;
-	height: 28px;
-	margin-left: 18px;
-	border-radius: 28px;
-	background: #333;
-}
-
-.cssgradients #edge-top, 
-.cssgradients #edge-bottom {
-	z-index: 1;
-	position: relative;
-	height: 36px;
-	width: 32px;
-	margin-left: -5px;
-	overflow:hidden;
-}
-.cssgradients #edge-bottom { height: 40px;}
-.cssgradients #edge-top:after, 
-.cssgradients #edge-bottom:after {
-	content: '';
-	display: block;
-	z-index: 1;
-	position: absolute;
-	width: 34px;
-	background: transparent;
-	margin-top:-19px; 
-}
-.cssgradients #edge-top:after {
-	height: 39px;
-	border: solid 16px #333; 
-	margin-left: -19px;
-	border-top-right-radius: 51px; 
-}
-.cssgradients #edge-bottom:after { 
-	height: 34px;
-	border: solid 17px #333; 
-	margin-left: -20px;
-	border-bottom-right-radius: 53px; 
+	background: $box-background;
 }
 
 
@@ -185,22 +128,26 @@ img { border: none; }
 	float: left;
 	clear: both;
 	margin: -5px 0 0 31px;
-	border-left: 2px solid #333;
+	border-left: 2px solid $box-background;
 	padding: 8px 0 0 8px;
 	line-height: 21px;
 }
 .unit {
 	width: 167px;
 	overflow: hidden;
-	background: #333;
+	background: $box-background;
 	margin-bottom: 4px;
 	padding: 10px 12px 10px 12px;
 	box-shadow: 0px 0px 4px rgba(50, 50, 50, 1);
 }
 #pages a:hover { color: #FF9E28; }
-#links a:hover { color: #7AB762; }
-#details a:hover { color: #66B5E0; }
+
 #links a { border-bottom: 1px solid #666; }
+#links a:hover { color: #7AB762; }
+
+#details a:hover { color: $post-text-link; }
+#details a:hover { color: $post-text; }
+
 #about { line-height: 17px; }
 #search {
 	padding: 8px;
@@ -270,7 +217,7 @@ article {
 	display: block;
 	float: left;
 	width: 670px;
-	background: #333;
+	background: $box-background;
 	box-shadow: 0px 0px 7px rgba(50, 50, 50, 1);
 	position: relative;
 }
@@ -334,7 +281,7 @@ h1, h4 {
 /* TEXT */
 .text .postInner {
 	width: 590px;
-	background: #3976B1;
+	background: $post-text;
 	padding: 0 55px 30px 55px;
 	font-size: 12pt;
 }
@@ -403,13 +350,13 @@ h1, h4 {
 	font-size: 17pt;
 	line-height: 24px;
 }
-.quote .quoteMeta a { color: #333; }
+.quote .quoteMeta a { color: $box-background; }
 .quote .quoteMeta:before, .quoteMeta:after {
 	position: relative;
 	content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
 	top: -10px;
 	margin: 4px;
-	border-bottom: 1px solid #333;
+	border-bottom: 1px solid $box-background;
 }
 
 /* LINK */
@@ -452,7 +399,7 @@ h1, h4 {
 /* CONVERSATION */
 .conversation .postInner {
 	background: #F42D33;
-	color: #333;
+	color: $box-background;
 	padding: 0 0 8px 0;
 }
 .conversation .convo {
@@ -535,7 +482,8 @@ h1, h4 {
 
 /* LINK COLORS */
 .text .postInner a,
-.text .postText a {color:#66B5E0;}
+.text .postText a {color:$post-text-link;}
+
 .link .caption a { color:#F42D33; }
 .photo .caption a { color:#F42D33; }
 .photosets .caption a { color:#F42D33; }
@@ -637,7 +585,7 @@ h1, h4 {
 	font-size: 12pt;
 }
 .pagination a {
-	background: #333;
+	background: $box-background;
 	display: inline-block;
 	height: 20px;
 	line-height: 20px;
@@ -652,7 +600,7 @@ h1, h4 {
 		height: 0;
 		border-top: 10px solid transparent;
 		border-bottom: 10px solid transparent;
-		border-left: 10px solid #333;
+		border-left: 10px solid $box-background;
 		position: absolute;
 		margin-top: -10px;
 		top: 50%;
@@ -666,7 +614,7 @@ h1, h4 {
 		height: 0;
 		border-top: 10px solid transparent;
 		border-bottom: 10px solid transparent;
-		border-right: 10px solid #333;
+		border-right: 10px solid $box-background;
 		position: absolute;
 		margin-top: -10px;
 		top: 50%;
@@ -681,7 +629,7 @@ h1, h4 {
 	width: 670px;
 	padding: 0 0 0 20px;
 	height: auto;
-	color: #333;
+	color: $box-background;
 	overflow: hidden;
 }
 .notFound h4 {
@@ -694,32 +642,24 @@ h1, h4 {
 a, .sound .postInner { color: #FFF; }
 .link .postInner h3 a { border-color: #FFF; }
 #search, .noteCount, .date, .tags li, .postBase .source { font-family: Arial, Helvetica, sans-serif; }
-#icon, #mask, #baseCircle, .unit, article, .pagination a { background:#333; }
-.notFound { color: #333; }
-.cssgradients #edge-top:after, .cssgradients #edge-bottom:after, .unitWrap, .quote .quoteMeta:before, .quoteMeta:after, .nextPage:after, .nextPage:before { border-color: #333; }
-.cssgradients #mask {
-    background-image:    -moz-radial-gradient(-10px 32px, circle closest-corner, transparent   0, transparent   36px, #333 37px, #333 38px);
-    background-image: -webkit-radial-gradient(-10px 32px, circle closest-corner, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, #333 37px, #333 38px);
-    background-image:     -ms-radial-gradient(-10px 32px, circle closest-corner, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, #333 37px, #333 38px);
-    background-image:      -o-radial-gradient(-10px 32px, circle closest-corner, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, #333 37px, #333 38px);
-    background-image:         radial-gradient(-10px 32px, circle closest-corner, rgba(0,0,0,0) 0, rgba(0,0,0,0) 36px, #333 37px, #333 38px);
-}
-.text .postInner { background: #3976B1; }
-.text .postInner a, .text .postText a {color:#66B5E0;}
+#icon, #mask, #baseCircle, .unit, article, .pagination a { background:$box-background; }
+.notFound { color: $box-background; }
+.unitWrap, .quote .quoteMeta:before, .quoteMeta:after, .nextPage:after, .nextPage:before { border-color: $box-background; }
+
 .photo .caption a { color:#F42D33; }
 .photosets .caption a { color:#F42D33; }
 .quote .postInner { background: #7AB762; 
-                    color: #333 !important; }
+                    color: $box-background !important; }
 .link .postInner { background: #000116; }
 .link .caption a { color:#F42D33; }
-.conversation .postInner { background: #F42D33; color: #333; }
+.conversation .postInner { background: #F42D33; color: $box-background; }
 .conversation .convo li { background: #FFFFFF; }
 .conversation .convo li:after { border-top: 20px solid #FFFFFF !important; }
 .sound .postInner { background: #FF9E28; }
 .vid .caption a { color:#F42D33; }
 #pages a:hover { color: #FF9E28; }
 #links a:hover { color: #7AB762; }
-#details a:hover { color: #3976B1; }
+
 
 .answer .postInner { 
     background: #7AB762; 
@@ -780,7 +720,7 @@ blockquote > *:first-child {
     display: inline;
 }
 h2 {
-	background: #333;
+	background: $box-background;
 	padding: 0.83em;
 }
 /* Hide FOUC for gist embedding */
