@@ -10,6 +10,7 @@ $palette_soft: #F9D3BE;
 $background: $palette_cream;
 $box-background: $palette_bebe;
 $box-text: #FFF;
+$accent: $palette_last;
 
 /* Header colors by post type */
 $post-text: $palette_last;
@@ -137,7 +138,7 @@ header {
 	float: left;
 	clear: both;
 	margin: -5px 0 0 31px;
-	border-left: 2px solid $box-background;
+	border-left: 2px solid $accent;
 	padding: 8px 0 0 8px;
 	line-height: 21px;
 }
@@ -158,8 +159,7 @@ header {
 	height: 28px;
 	margin-left: 18px;
 	border-radius: 28px;
-	background: #333;
-	color: invert(#333, 100%);
+	background: $accent;
 }
 
 #pages a:hover { color: #FF9E28; }
@@ -609,7 +609,7 @@ h1, h4 {
 a, .sound .postInner { color: #FFF; }
 .link .postInner h3 a { border-color: #FFF; }
 #search, .noteCount, .date, .tags li, .postBase .source { font-family: Arial, Helvetica, sans-serif; }
-.unitWrap, .quote .quoteMeta:before, .quoteMeta:after, .nextPage:after, .nextPage:before { border-color: $box-background; }
+.quote .quoteMeta:before, .quoteMeta:after, .nextPage:after, .nextPage:before { border-color: $box-background; }
 
 .photo .caption a { color:#F42D33; }
 .photosets .caption a { color:#F42D33; }
