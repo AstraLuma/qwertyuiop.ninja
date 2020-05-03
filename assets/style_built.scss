@@ -179,17 +179,6 @@ img { border: none; }
 	padding: 8px;
 	width: 175px;
 }
-.socialButtons a, 
-.socialButtons div {
-	display: inline-block;
-	width: 21px;
-	height: 21px;
-	background-repeat:no-repeat;
-	background-size: auto 21px !important;
-  	-moz-background-size: auto 21px !important;
-	background-position: 0 0;
-	background: url(social_icons.png);
-}
 .reblog { background-position: 0 0 !important; }
 .facebook { background-position: -21px 0 !important; }
 .twitter { background-position: -42px 0 !important; }
@@ -198,8 +187,6 @@ img { border: none; }
 .my-like,
 .my-liked { background-position: -105px 0 !important; }
 .my-liked { opacity: .43; }
-.socialButtons a:hover, 
-.socialButtons div:hover { opacity: .63; cursor: pointer; }
 
 
 /* RIGHT COLUMN */
@@ -231,17 +218,6 @@ article + article {
 	padding: 15px 0 15px 0;
 	height: auto;
 	overflow: hidden;
-}
-.reblogLink:before {
-	display: inline-block;
-	float: left;
-	content: '';
-	height: 11px;
-	width: 15px;
-	background-repeat:no-repeat !important;
-	background-size: auto 11px !important;
-  	-moz-background-size: auto 11px !important;
-	background: url(rebloglink.png);
 }
 .noteCount {
 	width: 470px;
@@ -282,26 +258,37 @@ h1, h4 {
 .text .postInner {
 	width: 590px;
 	background: $post-text;
+	color: invert($post-text);
 	padding: 0 55px 30px 55px;
 	font-size: 12pt;
+
+	a {
+		color:$post-text-link;
+	}
+
+	img {
+		width: auto;
+		max-width: 590px;
+		height: auto;
+		display: block;
+		margin: auto;
+	}
 }
-.text .postInner img {
-	width: auto;
-	max-width: 590px;
-	height: auto;
-	display: block;
-	margin: auto;
-}
+
 .text .postText {
 	font-size: 12pt;
 	padding: 0 40px 15px 40px;
-}
-.text .postText img {
-	width: auto;
-	max-width: 590px;
-	height: auto;
-	display: block;
-	margin: auto;
+
+	a {
+		color:$post-text-link;
+	}
+	img {
+		width: auto;
+		max-width: 590px;
+		height: auto;
+		display: block;
+		margin: auto;
+	}
 }
 
 
@@ -481,9 +468,6 @@ h1, h4 {
 
 
 /* LINK COLORS */
-.text .postInner a,
-.text .postText a {color:$post-text-link;}
-
 .link .caption a { color:#F42D33; }
 .photo .caption a { color:#F42D33; }
 .photosets .caption a { color:#F42D33; }
@@ -540,10 +524,6 @@ h1, h4 {
 			margin-right: 14px;
 			line-height: 22px;
 		}
-#posts .postBase .socialButtons {
-	float: right;
-	margin-bottom: 12px;
-}
 
 /* COMMENTS */
 .notes {
