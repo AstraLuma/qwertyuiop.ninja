@@ -93,74 +93,44 @@ img { border: none; }
 
 /* left column */
 header {
-	float: left;
-	position: relative;
+	position: fixed;
 	width: 240px;
 	font-style: italic;
     font-size: 12pt;
-}
-#stuck {
-	position: fixed;
-	width: 240px;
+
+	border-left: 4px solid $accent;
+	border-top: 8px solid $accent;
+	padding-left: 21px;
+	padding-top: 10px;
+	border-top-left-radius: 100px;
+
+    section {
+		overflow: hidden;
+		background: $box-background;
+		color: $box-text;
+		margin-bottom: 4px;
+		padding: 10px 12px 10px 12px;
+		box-shadow: 0px 0px 4px rgba(50, 50, 50, 1);
+    }
+
+    > section:first-child {
+    	margin-left: 64px;
+    }
+
+	> .via-circle {
+		width: 15px;
+		height: 15px;
+		border-radius: 15px;
+		border: solid 8px $accent;
+		// background: $accent;
+		position: relative;
+		top: 30px;
+		left: -38px;
+	}
 }
 
 
-	/* standard, non cutout nav */
-.inversePair {
-	display: inline-block;    
-	position: relative;    
-	vertical-align: top;
-}
-#icon {
-	width: 64px;
-	height: 64px;
-	overflow: hidden;
-	background: $box-background;
-	color: $box-text;
-	z-index: 1;
-}
-#mask {
-	width: 165px;
-	min-height: 67px;
-	overflow: hidden;
-	background: $box-background;
-	color: $box-text;
-}
 
-
-/* description & remainder of nav & social buttons */
-.description {
-	float: left;
-	display: block;
-	padding: 10px 12px 10px 10px;
-}
-.unitWrap {
-	float: left;
-	clear: both;
-	margin: -5px 0 0 31px;
-	border-left: 2px solid $accent;
-	padding: 8px 0 0 8px;
-	line-height: 21px;
-}
-.unit {
-	width: 167px;
-	overflow: hidden;
-	background: $box-background;
-	color: $box-text;
-	margin-bottom: 4px;
-	padding: 10px 12px 10px 12px;
-	box-shadow: 0px 0px 4px rgba(50, 50, 50, 1);
-}
-
-#baseCircle {
-	float: left;
-	clear: both;
-	width: 28px;
-	height: 28px;
-	margin-left: 18px;
-	border-radius: 28px;
-	background: $accent;
-}
 
 #pages a:hover { color: #FF9E28; }
 
