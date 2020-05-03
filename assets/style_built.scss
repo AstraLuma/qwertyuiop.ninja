@@ -28,6 +28,10 @@ $post-video: #F42D33;
 $body: 'ge_geek', Arial, helvetica, sans-serif;
 $details: Arial, Helvetica, sans-serif;
 
+$fa-font-path: "/assets/fontawesome/webfonts";
+@import "fontawesome.scss";
+@import "brands.scss";
+
 @font-face {
     font-family: 'ge_geek';
     src: url(/assets/fonts/ge_geek-bold.woff) format('woff');
@@ -89,6 +93,7 @@ body {
 
 p { margin-top: 15px; }
 img { border: none; }
+a {color: inherit;}
 
 
 /* left column */
@@ -104,7 +109,7 @@ header {
 	padding-top: 10px;
 	border-top-left-radius: 100px;
 
-    section {
+    > section {
 		overflow: hidden;
 		background: $box-background;
 		color: $box-text;
@@ -113,7 +118,16 @@ header {
 		box-shadow: 0px 0px 4px rgba(50, 50, 50, 1);
     }
 
-    > section:first-child {
+    > .icons {
+    	color: $box-background;
+    	font-size: 40px;
+   	    display: flex;
+	    justify-content: space-evenly;
+		margin-bottom: 4px;
+		padding: 10px 12px 10px 12px;
+    }
+
+    > :first-child {
     	margin-left: 64px;
     }
 
@@ -574,23 +588,6 @@ h1, h4 {
 	margin: 0;
 }
 
-
-
-a, .sound .postInner { color: #FFF; }
-.link .postInner h3 a { border-color: #FFF; }
-#search, .noteCount, .date, .tags li, .postBase .source { font-family: Arial, Helvetica, sans-serif; }
-.quote .quoteMeta:before, .quoteMeta:after, .nextPage:after, .nextPage:before { border-color: $box-background; }
-
-.photo .caption a { color:#F42D33; }
-.photosets .caption a { color:#F42D33; }
-.link .caption a { color:#F42D33; }
-.conversation .postInner { background: #F42D33; color: $box-background; }
-.conversation .convo li { background: #FFFFFF; }
-.conversation .convo li:after { border-top: 20px solid #FFFFFF !important; }
-.sound .postInner { background: #FF9E28; }
-.vid .caption a { color:#F42D33; }
-#pages a:hover { color: #FF9E28; }
-#links a:hover { color: #7AB762; }
 
 
 .answer .postInner { 

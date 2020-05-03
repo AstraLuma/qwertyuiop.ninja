@@ -12,21 +12,17 @@ name: qwertyuiop.ninja
 description: Good with a keyboard and fluent in gibberish
 author:
   name: Jamie
-  email: me@astro73.com
-  uri: http://astro73.com/
+  email: jamie@ivyleav.es
+  uri: http://astraluma.com/
 defaults:
 - values:
     articleclass: text
 
 twitter:
-  username: QwertyuiopNinja
-facebook:
-  publisher: https://www.facebook.com/qwertyuiopninja/
+  username: astraluma
 author:
-  twitter: astronouth7303
+  twitter: astraluma
 social:
   links:
-    - https://www.facebook.com/qwertyuiopninja/
-    - https://plus.google.com/+QwertyuiopNinja
-    - https://twitter.com/QwertyuiopNinja
-logo: /assets/avatar.128.png
+    - https://twitter.com/astraluma
+logo: /assets/avatar.png
