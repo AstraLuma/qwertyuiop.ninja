@@ -16,33 +16,31 @@
 </head>
 
     <body>
-        <div class="wrapper">
             
-            <div class="colLeft">
-                <div id="stuck">
-                    <a href="/"><img id="icon" class="inversePair" src='/assets/avatar.png'></a>
-                    <div id="mask" class="inversePair">
-                        <span class="description">Good with a keyboard and fluent in gibberish.</span>
-                    </div>
-                    <div class="unitWrap">
-                        <div id="pages" class="unit">
-                            <ul>
-                                <li><a href="https://twitter.com/AstraLuma">Twitter</a></li>
-                                <li><a href="https://github.com/astronouth7303">GitHub</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="baseCircle"></div>
+        <header>
+            <div id="stuck">
+                <a href="/"><img id="icon" class="inversePair" src='/assets/avatar.png'></a>
+                <div id="mask" class="inversePair">
+                    <span class="description">Good with a keyboard and fluent in gibberish.</span>
                 </div>
+                <div class="unitWrap">
+                    <div id="pages" class="unit">
+                        <ul>
+                            <li><a href="https://twitter.com/AstraLuma">Twitter</a></li>
+                            <li><a href="https://github.com/astronouth7303">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="baseCircle"></div>
+            </div>
+        </header>
+
+        <main>
+            
+            <div class="autopagerize_page_element" id="posts">
+            {{content}}
             </div>
 
-            <div class="colRight">
-                
-                <div class="autopagerize_page_element" id="posts">
-                {{content}}
-                </div>
-
-            </div>
-        </div>
+        </main>
     </body>
 </html>

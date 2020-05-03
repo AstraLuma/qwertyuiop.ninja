@@ -9,7 +9,7 @@ $palette_soft: #F9D3BE;
 
 $background: $palette_cream;
 $box-background: $palette_bebe;
-$text: #FFF;
+$box-text: #FFF;
 
 /* Header colors by post type */
 $post-text: $palette_last;
@@ -58,29 +58,40 @@ $details: Arial, Helvetica, sans-serif;
     font-style: normal;
 }
 
+body {
+	display: grid;
+	grid-template-areas:
+	    "nav . content"
+	    ;
+	grid-template-columns: 240px 60px auto;
+	margin: 70px auto;
+	max-width: 1050px;
+}
+
+
+header {
+	grid-area: nav;
+}
+
+main {
+	grid-area: content;
+}
+
+
 /* global */
 body {
 	background: $background;
-	background-position: top center, top;
-	background-repeat: repeat-y, repeat;
 	font-family: $body;
 	font-size: 13pt;
-	color: #fff;
-	min-width: 1130px;
-}
-.wrapper {
-	width: 1050px;
-	margin: 70px auto 0 auto;
-	overflow: hidden;
+	color: invert($background, 100%);
 }
 
 p { margin-top: 15px; }
 img { border: none; }
 
 
-
 /* left column */
-.colLeft {
+header {
 	float: left;
 	position: relative;
 	width: 240px;
@@ -104,6 +115,7 @@ img { border: none; }
 	height: 64px;
 	overflow: hidden;
 	background: $box-background;
+	color: $box-text;
 	z-index: 1;
 }
 #mask {
@@ -111,6 +123,7 @@ img { border: none; }
 	min-height: 67px;
 	overflow: hidden;
 	background: $box-background;
+	color: $box-text;
 }
 
 
@@ -132,6 +145,7 @@ img { border: none; }
 	width: 167px;
 	overflow: hidden;
 	background: $box-background;
+	color: $box-text;
 	margin-bottom: 4px;
 	padding: 10px 12px 10px 12px;
 	box-shadow: 0px 0px 4px rgba(50, 50, 50, 1);
@@ -145,6 +159,7 @@ img { border: none; }
 	margin-left: 18px;
 	border-radius: 28px;
 	background: #333;
+	color: invert(#333, 100%);
 }
 
 #pages a:hover { color: #FF9E28; }
@@ -156,9 +171,8 @@ img { border: none; }
 #details a:hover { color: $post-text; }
 
 /* RIGHT COLUMN */
-.colRight {
+main {
 	float: left;
-	margin-left: 300px;
 	font-style: italic;
 }
 #posts {
@@ -171,6 +185,7 @@ article {
 	float: left;
 	width: 670px;
 	background: $box-background;
+	color: $box-text;
 	box-shadow: 0px 0px 7px rgba(50, 50, 50, 1);
 	position: relative;
 }
@@ -267,6 +282,7 @@ h1, h4 {
 /* QUOTES */
 .quote .postInner {
 	background: #7AB762;
+	color: invert(#7AB762, 100%);
 	text-align: center;
 	padding: 0;
 }
@@ -315,6 +331,7 @@ h1, h4 {
 /* LINK */
 .link .postInner {
 	background: #000116;
+	color: invert(#000116, 100%);
 	text-align: center;
 	padding: 0;
 }
@@ -367,6 +384,7 @@ h1, h4 {
 	margin-bottom: 30px;
 	border-radius: 5px;
 	background: #fff;
+	color: #000;
 }
 .conversation .convo li:nth-child(even):after {
    content: "";
@@ -400,6 +418,7 @@ h1, h4 {
 /* SOUND */
 .sound .postInner {
 	background: #FF9E28;
+	color: invert(#FF9E28, 100%);
 	font-size: 12pt;
 	font-style: italic;
 }
@@ -444,52 +463,53 @@ h1, h4 {
 	overflow:hidden;
 	font-style: normal;
 }
-	.tags {
-		width: 470px;
-		float: left;
-		margin-bottom: 6px;
-	}
-	.tags li {
-		display: block;
-		float: left;
-		margin: 0 0 8px 16px;
-		font-family: Arial, helvetica, sans-serif;
-	}
-	.tags li a {
-		font-size: 10pt;
-		color: #929292;
-		height: 16px;
-		background: #fff;
-		position: relative; 
-		display: block;
-		float: left;
-		padding: 0 6px 0 3px;
-	}
-	.tags li a:before {
-		content: " "; 
-		display: block; 
-		width: 0; 
-		height: 0;
-		border-top: 8px solid transparent;
-		border-bottom: 8px solid transparent;
-		border-right: 8px solid #fff;
-		position: absolute;
-		margin-top: -8px;
-		top: 50%;
-		right: 100%;
-		z-index: 2; 
-	}
-		.tags li a:hover { background: #B4AFAF; color: white; }
-		.tags li a:hover:before { border-right: 8px solid #B4AFAF; }
-		.tags li a span { display: none; margin-left: -4px; }
-		.postBase .source { 
-			font-family: Arial, helvetica, sans-serif;
-			font-size: 10pt;
-			display: block; 
-			float: right; 
-			margin-right: 14px;
-			line-height: 22px;
-		}
+.tags {
+	width: 470px;
+	float: left;
+	margin-bottom: 6px;
+}
+.tags li {
+	display: block;
+	float: left;
+	margin: 0 0 8px 16px;
+	font-family: Arial, helvetica, sans-serif;
+}
+.tags li a {
+	font-size: 10pt;
+	color: #929292;
+	height: 16px;
+	background: #fff;
+	color: #000;
+	position: relative; 
+	display: block;
+	float: left;
+	padding: 0 6px 0 3px;
+}
+.tags li a:before {
+	content: " "; 
+	display: block; 
+	width: 0; 
+	height: 0;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-right: 8px solid #fff;
+	position: absolute;
+	margin-top: -8px;
+	top: 50%;
+	right: 100%;
+	z-index: 2; 
+}
+.tags li a:hover { background: #B4AFAF; color: white; }
+.tags li a:hover:before { border-right: 8px solid #B4AFAF; }
+.tags li a span { display: none; margin-left: -4px; }
+.postBase .source { 
+	font-family: Arial, helvetica, sans-serif;
+	font-size: 10pt;
+	display: block; 
+	float: right; 
+	margin-right: 14px;
+	line-height: 22px;
+}
 
 /* COMMENTS */
 .notes {
@@ -513,6 +533,7 @@ h1, h4 {
 }
 .avatar {
 	background: white;
+	color: black;
 }
 
 /* DISQUS */
@@ -532,11 +553,11 @@ h1, h4 {
 }
 .pagination a {
 	background: $box-background;
+	color: $box-text;
 	display: inline-block;
 	height: 20px;
 	line-height: 20px;
 	padding: 0 8px 0 8px;
-	color: white;
 	position: relative;
 }
 .nextPage::after {
@@ -588,14 +609,10 @@ h1, h4 {
 a, .sound .postInner { color: #FFF; }
 .link .postInner h3 a { border-color: #FFF; }
 #search, .noteCount, .date, .tags li, .postBase .source { font-family: Arial, Helvetica, sans-serif; }
-.notFound { color: $box-background; }
 .unitWrap, .quote .quoteMeta:before, .quoteMeta:after, .nextPage:after, .nextPage:before { border-color: $box-background; }
 
 .photo .caption a { color:#F42D33; }
 .photosets .caption a { color:#F42D33; }
-.quote .postInner { background: #7AB762; 
-                    color: $box-background !important; }
-.link .postInner { background: #000116; }
 .link .caption a { color:#F42D33; }
 .conversation .postInner { background: #F42D33; color: $box-background; }
 .conversation .convo li { background: #FFFFFF; }
@@ -666,6 +683,7 @@ blockquote > *:first-child {
 }
 h2 {
 	background: $box-background;
+	color: $box-text;
 	padding: 0.83em;
 }
 /* Hide FOUC for gist embedding */
