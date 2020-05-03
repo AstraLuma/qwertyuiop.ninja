@@ -59,7 +59,6 @@ $details: Arial, Helvetica, sans-serif;
 }
 
 /* global */
-*{margin:0;padding:0;} /* TODO: Get rid of this */
 body {
 	background: $background;
 	background-position: top center, top;
@@ -74,10 +73,7 @@ body {
 	margin: 70px auto 0 auto;
 	overflow: hidden;
 }
-a { text-decoration: none; color: inherit; }
-a:hover { opacity: .85; }
-a.imageLink:hover { opacity: 1; }
-ul, li { list-style: none; }
+
 p { margin-top: 15px; }
 img { border: none; }
 
@@ -592,7 +588,6 @@ h1, h4 {
 a, .sound .postInner { color: #FFF; }
 .link .postInner h3 a { border-color: #FFF; }
 #search, .noteCount, .date, .tags li, .postBase .source { font-family: Arial, Helvetica, sans-serif; }
-#mask, #baseCircle, .unit, article { background:$box-background; }
 .notFound { color: $box-background; }
 .unitWrap, .quote .quoteMeta:before, .quoteMeta:after, .nextPage:after, .nextPage:before { border-color: $box-background; }
 
