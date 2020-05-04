@@ -188,8 +188,6 @@ header {
         border-top: 8px solid $accent;
     }
 
-    z-index: -10;
-
     @include thicc {
         position: fixed;
         padding-left: 21px;
