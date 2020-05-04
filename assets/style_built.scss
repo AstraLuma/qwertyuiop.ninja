@@ -220,17 +220,12 @@ header {
         }
 
         @include skinny {
-            position: absolute;
-            top: 0px;
-            right: calc(50vw - 350px);
+            position: relative;
+            top: -25px;
 
             > * {
                 margin: 5px;
             }
-        }
-
-        @include scrawny {
-            right: calc(-100vw + 20px);
         }
     }
 
