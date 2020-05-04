@@ -172,9 +172,15 @@ header {
     font-style: italic;
     font-size: 12pt;
 
-    border-left: 4px solid $accent;
-    border-top: 8px solid $accent;
-    border-top-left-radius: 120px 100px;
+    @include thicc {
+        border-left: 4px solid $accent;
+        border-top: 8px solid $accent;
+        border-top-left-radius: 120px 100px;
+    }
+
+    @include skinny {
+        border-top: 8px solid $accent;
+    }
 
     z-index: -10;
 
@@ -247,9 +253,12 @@ header {
         }
 
         @include skinny {
+            width: 16px;
+            height: 16px;
             position: absolute;
-            top: 230px;
-            left: 6px;
+            top: 13px;
+            left: 15px;
+            background: $palette_cream;
         }
     }
 }
