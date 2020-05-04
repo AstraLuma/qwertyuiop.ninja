@@ -68,7 +68,7 @@ body {
 	grid-template-areas:
 	    "nav . content"
 	    ;
-	grid-template-columns: 240px 60px auto;
+	grid-template-columns: 240px 75px auto;
 	margin: 70px auto;
 	max-width: 1050px;
 }
@@ -146,24 +146,11 @@ header {
 
 
 
-#pages a:hover { color: #FF9E28; }
-
-#links a { border-bottom: 1px solid #666; }
-#links a:hover { color: #7AB762; }
-
-#details a:hover { color: $post-text-link; }
-#details a:hover { color: $post-text; }
-
 /* RIGHT COLUMN */
 main {
-	float: left;
 	font-style: italic;
 }
-#posts {
-	float: left;
-	width: 685px;
-	padding-left: 15px;
-}
+
 article {
 	display: block;
 	float: left;
@@ -172,36 +159,46 @@ article {
 	color: $box-text;
 	box-shadow: 0px 0px 7px rgba(50, 50, 50, 1);
 	position: relative;
+
+	a {
+		// TODO
+	}
+
+	a:hover {
+		// TODO
+	}
 }
+
 article + article {
 	margin-top: 50px;
 }
-.postInner {
+
+.headline {
 	position: relative;
 	left: -15px;
-	width: 700px;
+	right: 15px;
 	padding: 15px 0 15px 0;
 	height: auto;
 	overflow: hidden;
+
+	a {
+		text-decoration: none;
+	}
 }
-.noteCount {
-	width: 470px;
-	float: left;
-	padding: 2px 0 0 7px;
-	font-family: Arial, helvetica, sans-serif;
-	font-style: normal;
-	font-size: 10pt;
-	height: 16px;
-}
+
 .date {
-	width: 160px;
-	float: right;
+	height: 16px;
 	padding: 2px 7px 0 0;
+
+	text-align: right;
+
 	font-family: Arial, helvetica, sans-serif;
 	font-style: normal;
 	font-size: 10pt;
-	height: 16px;
-	text-align: right;
+
+	a {
+		text-decoration: none;
+	}
 }
 img.bustImage {
 	position: relative;
@@ -220,7 +217,7 @@ h1, h4 {
 }
 
 /* TEXT */
-.text .postInner {
+.text .headline {
 	width: 590px;
 	background: $post-text;
 	color: invert($post-text);
@@ -264,20 +261,20 @@ h1, h4 {
 }
 
 /* QUOTES */
-.quote .postInner {
+.quote .headline {
 	background: #7AB762;
 	color: invert(#7AB762, 100%);
 	text-align: center;
 	padding: 0;
 }
-.quote .postInner h2 {
+.quote .headline h2 {
 	font-weight:normal;
 	font-size: 39px;
 	line-height: 44px;
 	padding: 0 40px 0 40px;
 }
-.quote .postInner h2:before, 
-.quote .postInner h2:after {
+.quote .headline h2:before, 
+.quote .headline h2:after {
 	height: 10px;
 	display: block;
 	font-size: 80px;
@@ -286,12 +283,12 @@ h1, h4 {
 	font-weight: 400;
 	font-style: normal;
 }
-.quote .postInner h2:before { 
+.quote .headline h2:before { 
 	content: ''; 
 	margin-bottom: 20px;
 	padding-top: 40px;
 }
-.quote .postInner h2:after { 
+.quote .headline h2:after { 
 	content: ''; 
 	margin-top: 40px;
 	margin-bottom: -20px;
@@ -313,23 +310,23 @@ h1, h4 {
 }
 
 /* LINK */
-.link .postInner {
+.link .headline {
 	background: #000116;
 	color: invert(#000116, 100%);
 	text-align: center;
 	padding: 0;
 }
-.link .postInner h3 {
+.link .headline h3 {
 	font-size: 31px;
 	line-height: 40px;
 	font-weight: normal;
 	padding: 0 170px 0 170px;
 }
-.link .postInner h3 a {
+.link .headline h3 a {
 	border-bottom: 2px solid #fff;
 }
-.link .postInner h3:before, 
-.link .postInner h3:after {
+.link .headline h3:before, 
+.link .headline h3:after {
 	height: 10px;
 	display: block;
 	font-size: 42px;
@@ -337,13 +334,13 @@ h1, h4 {
 	font-weight: 400;
 	font-style: normal;
 }
-.link .postInner h3:before { 
+.link .headline h3:before { 
 	content: '\221e'; 
 	margin-bottom: 40px;
 	margin-top: -14px;
 	padding-top: 40px;
 }
-.link .postInner h3:after { 
+.link .headline h3:after { 
 	content: '\221e'; 
 	margin-top: 30px;
 	height: 18px;
@@ -351,7 +348,7 @@ h1, h4 {
 }
 
 /* CONVERSATION */
-.conversation .postInner {
+.conversation .headline {
 	background: #F42D33;
 	color: $box-background;
 	padding: 0 0 8px 0;
@@ -400,7 +397,7 @@ h1, h4 {
 }
 
 /* SOUND */
-.sound .postInner {
+.sound .headline {
 	background: #FF9E28;
 	color: invert(#FF9E28, 100%);
 	font-size: 12pt;
@@ -430,7 +427,7 @@ h1, h4 {
 }
 
 /* VIDEO */
-.vid .postInner {
+.vid .headline {
 	padding: 0 !important;
 }
 .vid .caption a { color:#F42D33; }
@@ -590,21 +587,21 @@ h1, h4 {
 
 
 
-.answer .postInner { 
+.answer .headline { 
     background: #7AB762; 
     padding: 0 55px 1em 0;
     width: 645px;
     min-height: 96px;
 }
-.answer .postInner img {
+.answer .headline img {
     float: left;
     height: 96px;
     margin-right: 1em;
 }
-.answer .postInner h3 {
+.answer .headline h3 {
     margin: 0.7em 0 0.2em 0;
 }
-.answer .postInner h3 + p {
+.answer .headline h3 + p {
     margin-top: 0;
 }
 
