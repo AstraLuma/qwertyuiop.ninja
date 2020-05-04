@@ -75,7 +75,7 @@ $fa-font-path: "/assets/fontawesome/webfonts";
 
 // Less than the normal width of a post
 @mixin scrawny {
-  @media screen and (max-width: 1050px) { @content; }
+  @media screen and (max-width: 700px) { @content; }
 }
 
 // Less than the normal width of side-by-side
@@ -151,6 +151,12 @@ main {
         width: calc(100vw - 30px);
     }
 
+}
+
+@include scrawny {
+    main {
+        margin: 0;
+    }
 }
 
 
