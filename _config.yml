@@ -1,4 +1,4 @@
-gems:
+plugins:
 - jekyll-mentions
 - jekyll-redirect-from
 - jekyll-sitemap
@@ -6,6 +6,8 @@ gems:
 - jekyll-paginate
 - jekyll-gist
 - jekyll-seo-tag
+- jemoji
+
 paginate: 10
 
 name: qwertyuiop.ninja
