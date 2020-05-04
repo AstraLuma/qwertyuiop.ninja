@@ -64,6 +64,14 @@ $fa-font-path: "/assets/fontawesome/webfonts";
     font-style: normal;
 }
 
+@font-face {
+  font-family: 'Share Tech Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Share Tech Mono'), local('ShareTechMono-Regular'), url(/assets/fonts/ShareTechMono-Regular.ttf) format('truetype');
+}
+
 @mixin box-bebe {
 	background: $box-background;
 	color: $box-text;
@@ -547,4 +555,8 @@ blockquote > *:first-child {
 /* Hide FOUC for gist embedding */
 .gist > a {
     display: none;
+}
+
+pre, code, tt {
+    font-family: 'Share Tech Mono', monospace;
 }
