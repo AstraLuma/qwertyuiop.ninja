@@ -72,43 +72,64 @@ $fa-font-path: "/assets/fontawesome/webfonts";
   src: local('Share Tech Mono'), local('ShareTechMono-Regular'), url(/assets/fonts/ShareTechMono-Regular.ttf) format('truetype');
 }
 
+
+// Less than the normal width of a post
+@mixin scrawny {
+  @media screen and (max-width: 1050px) { @content; }
+}
+
+// Less than the normal width of side-by-side
+@mixin skinny {
+  @media screen and (max-width: 1050px) { @content; }
+}
+
+// Roomy enough for side-by-side
+@mixin thicc {
+  @media screen and (min-width: 1051px) { @content; }
+}
+
 @mixin box-bebe {
-	background: $box-background;
-	color: $box-text;
+    background: $box-background;
+    color: $box-text;
 
-	a {
-		// TODO
-	}
+    a {
+        // TODO
+    }
 
-	a:hover {
-		// TODO
-	}
+    a:hover {
+        // TODO
+    }
 }
 
-body {
-	display: grid;
-	grid-template-areas:
-	    "nav . content"
-	    ;
-	grid-template-columns: 240px 60px auto;
-	margin: 70px auto;
-	max-width: 1050px;
-}
+@include thicc {
+    body {
+        display: grid;
+        grid-template-areas:
+            "nav . content"
+            ;
+        grid-template-columns: 240px 60px auto;
+        margin: 70px auto;
+        max-width: 1050px;
+    }
 
+    article {
+        width: 670px;
+    }
+    header {
+        width: 240px;
+    }
+}
 
 header {
-	grid-area: nav;
+    grid-area: nav;
 }
 
 main {
-	grid-area: content;
+    grid-area: content;
 }
 
-article {
-    width: 670px;
-}
 
-@media screen and (max-width: 1050px) {
+@include skinny {
     body {
         display: grid;
         grid-template-areas:
@@ -118,6 +139,7 @@ article {
         grid-template-rows: 60px auto;
         grid-template-columns: auto;
         margin: 0 auto;
+        max-width: 100vw;
     }
 
     main {
@@ -125,17 +147,19 @@ article {
     }
 
     article {
-        // width: calc(100vw - 30px);
+        max-width: 670px;
+        width: calc(100vw - 30px);
     }
+
 }
 
 
 /* global */
 body {
-	background: $background;
-	font-family: $body;
-	font-size: 13pt;
-	color: invert($background, 100%);
+    background: $background;
+    font-family: $body;
+    font-size: 13pt;
+    color: invert($background, 100%);
 }
 
 p { margin-top: 15px; }
@@ -145,48 +169,94 @@ a {color: inherit;}
 
 /* left column */
 header {
-	position: fixed;
-	width: 240px;
-	font-style: italic;
+    font-style: italic;
     font-size: 12pt;
 
-	border-left: 4px solid $accent;
-	border-top: 8px solid $accent;
-	padding-left: 21px;
-	padding-top: 10px;
-	border-top-left-radius: 120px 100px;
+    border-left: 4px solid $accent;
+    border-top: 8px solid $accent;
+    border-top-left-radius: 120px 100px;
 
-    > section {
-    	@include box-bebe;
-		overflow: hidden;
-		margin-bottom: 4px;
-		padding: 10px 12px 10px 12px;
-		box-shadow: 0px 0px 4px rgba(50, 50, 50, 1);
+    z-index: -10;
+
+    @include thicc {
+        position: fixed;
+        padding-left: 21px;
+        padding-top: 10px;
     }
 
+    @include skinny {
+        margin-top: 25px;
+        margin-left: 20px;
+
+        height: 200px;
+
+        > * {
+            display: inline;
+        }
+
+        > section {
+            display: none;
+        }
+    }
+
+    > section {
+        @include box-bebe;
+        overflow: hidden;
+        margin-bottom: 4px;
+        padding: 10px 12px 10px 12px;
+        box-shadow: 0px 0px 4px rgba(50, 50, 50, 1);
+    }
+
+
     > .icons {
-    	color: $box-background;
-    	font-size: 40px;
-   	    display: flex;
-	    justify-content: space-between;
-		margin-bottom: 4px;
-		padding: 10px 12px 10px 12px;
+        color: $box-background;
+        font-size: 40px;
+        margin-bottom: 4px;
+        padding: 10px 12px 10px 12px;
+
+        @include thicc {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @include skinny {
+            position: absolute;
+            top: 0px;
+            right: calc(50vw - 350px);
+
+            > * {
+                margin: 5px;
+            }
+        }
+
+        @include scrawny {
+            right: calc(-100vw + 20px);
+        }
     }
 
     > :first-child {
-    	margin-left: 64px;
+        margin-left: 64px;
     }
 
-	> .via-circle {
-		width: 15px;
-		height: 15px;
-		border-radius: 15px;
-		border: solid 8px $accent;
-		// background: $accent;
-		position: relative;
-		top: 30px;
-		left: -38px;
-	}
+    > .via-circle {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        border: solid 8px $accent;
+        display: block;
+        // background: $accent;
+        @include thicc {
+            position: relative;
+            top: 30px;
+            left: -38px;
+        }
+
+        @include skinny {
+            position: absolute;
+            top: 230px;
+            left: 6px;
+        }
+    }
 }
 
 
@@ -195,161 +265,160 @@ header {
 /* RIGHT COLUMN */
 
 article {
-	@include box-bebe;
-	display: block;
-	box-shadow: 0px 0px 7px rgba(50, 50, 50, 1);
+    @include box-bebe;
+    display: block;
+    box-shadow: 0px 0px 7px rgba(50, 50, 50, 1);
     margin: 0 15px;
 }
 
 article + article {
-	margin-top: 50px;
+    margin-top: 50px;
 }
 
 .headline {
-	position: relative;
-	left: -15px;
-	right: 15px;
-	padding: 15px 0 15px 0;
-	height: auto;
-	overflow: hidden;
+    position: relative;
+    left: -15px;
+    // For some reason, the padding effects the 100%?
+    width: calc(100% + 30px - 110px);
+    padding: 0 55px 30px 55px;
+    height: auto;
+    overflow: hidden;
 
-	a {
-		text-decoration: none;
-	}
+    a {
+        text-decoration: none;
+    }
 
-	h2 {
-	    margin-bottom: 1em;
-	    font-weight: normal;
-	    font-size: 24pt;
-	    margin-top: 30px;
-	    background: none;
-	}
+    h2 {
+        margin-bottom: 1em;
+        font-weight: normal;
+        font-size: 24pt;
+        margin-top: 30px;
+        background: none;
+    }
 }
 
 .date {
-	height: 16px;
-	padding: 2px 7px 0 0;
+    height: 16px;
+    padding: 2px 7px 0 0;
 
-	text-align: right;
+    text-align: right;
 
-	font-family: Arial, helvetica, sans-serif;
-	font-style: normal;
-	font-size: 10pt;
+    font-family: Arial, helvetica, sans-serif;
+    font-style: normal;
+    font-size: 10pt;
 
-	a {
-		text-decoration: none;
-	}
+    a {
+        text-decoration: none;
+    }
 }
 
 img.bustImage {
-	position: relative;
-	left: -15px;
-	width: 700px;
-	height: auto;
+    position: relative;
+    left: -15px;
+    width: 700px;
+    height: auto;
 }
 .caption {
-	font-size: 12pt;
-	padding: 0 40px 15px 40px;
+    font-size: 12pt;
+    padding: 0 40px 15px 40px;
 }
 h1, h4 {
-	font-weight: normal;
-	font-size: 24pt;
-	margin-top: 30px;
+    font-weight: normal;
+    font-size: 24pt;
+    margin-top: 30px;
 }
 
 /* TEXT */
 .text .headline {
-	width: 590px;
-	background: $post-text;
-	color: invert($post-text);
-	padding: 0 55px 30px 55px;
-	font-size: 12pt;
+    background: $post-text;
+    color: invert($post-text);
+    font-size: 12pt;
 
-	a {
-		color:$post-text-link;
-	}
+    a {
+        color:$post-text-link;
+    }
 }
 
 .text .postText {
-	font-size: 12pt;
-	padding: 0 40px 15px 40px;
+    font-size: 12pt;
+    padding: 0 40px 15px 40px;
 
-	a {
-		color:$post-text-link;
-	}
-	img {
-		width: auto;
-		max-width: 590px;
-		height: auto;
-		display: block;
-		margin: auto;
-	}
+    a {
+        color:$post-text-link;
+    }
+    img {
+        width: auto;
+        max-width: 590px;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
 }
 
 
 /* IMAGES */
 .photoset {
-	position: relative;
-	left: -15px;
+    position: relative;
+    left: -15px;
 }
 
 /* QUOTES */
 .quote .headline {
-	background: #7AB762;
-	color: invert(#7AB762, 100%);
-	text-align: center;
-	padding: 0;
+    background: #7AB762;
+    color: invert(#7AB762, 100%);
+    text-align: center;
+    padding: 0;
 }
 .quote .headline h2 {
-	font-weight:normal;
-	font-size: 39px;
-	line-height: 44px;
-	padding: 0 40px 0 40px;
+    font-weight:normal;
+    font-size: 39px;
+    line-height: 44px;
+    padding: 0 40px 0 40px;
 }
 .quote .headline h2:before, 
 .quote .headline h2:after {
-	height: 10px;
-	display: block;
-	font-size: 80px;
-	font-family: 'ge_social',Arial, helvetica, sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	font-style: normal;
+    height: 10px;
+    display: block;
+    font-size: 80px;
+    font-family: 'ge_social',Arial, helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-style: normal;
 }
 .quote .headline h2:before { 
-	content: ''; 
-	margin-bottom: 20px;
-	padding-top: 40px;
+    content: ''; 
+    margin-bottom: 20px;
+    padding-top: 40px;
 }
 .quote .headline h2:after { 
-	content: ''; 
-	margin-top: 40px;
-	margin-bottom: -20px;
-	padding-bottom: 40px;
+    content: ''; 
+    margin-top: 40px;
+    margin-bottom: -20px;
+    padding-bottom: 40px;
 }
 .quote .quoteMeta {
-	display: block;
-	/*font-family: 'ge_geek_cond', Arial, helvetica, sans-serif;*/
-	font-size: 17pt;
-	line-height: 24px;
+    display: block;
+    /*font-family: 'ge_geek_cond', Arial, helvetica, sans-serif;*/
+    font-size: 17pt;
+    line-height: 24px;
 }
 .quote .quoteMeta a { color: $box-background; }
 .quote .quoteMeta:before, .quoteMeta:after {
-	position: relative;
-	content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
-	top: -10px;
-	margin: 4px;
-	border-bottom: 1px solid $box-background;
+    position: relative;
+    content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
+    top: -10px;
+    margin: 4px;
+    border-bottom: 1px solid $box-background;
 }
 
 /* LINK */
 .headline .biglink, .headline .asker {
     display: block;
-	float: left;
-	font-size: 80px;
-	margin-right: 12px;
-	margin-top: 20px;
-	margin-left: -20px;
+    float: left;
+    font-size: 80px;
+    margin-right: 12px;
+    margin-top: 20px;
+    margin-left: -20px;
 }
 
 .headline .asker {
@@ -358,18 +427,18 @@ h1, h4 {
 
 /* CONVERSATION */
 .conversation .convo {
-	margin: 25px;
-	width: 650px;
-	font-size: 14pt;
+    margin: 25px;
+    width: 650px;
+    font-size: 14pt;
 }
 .conversation .convo li {
-	display: block;
-	position: relative;
-	padding: 14px;
-	margin-bottom: 30px;
-	border-radius: 5px;
-	background: #fff;
-	color: #000;
+    display: block;
+    position: relative;
+    padding: 14px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
 }
 .conversation .convo li:nth-child(even):after {
    content: "";
@@ -388,154 +457,154 @@ h1, h4 {
    border-right: 18px solid transparent; 
 }
 .conversation .name {
-	font-weight: bold;
-	font-style: normal;
-	line-height: 20px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 20px;
 }
 .conversation p {
-	margin-top: 0;
-	margin-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 .conversation span + p {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /* SOUND */
 .sound .headline {
-	background: #FF9E28;
-	color: invert(#FF9E28, 100%);
-	font-size: 12pt;
-	font-style: italic;
+    background: #FF9E28;
+    color: invert(#FF9E28, 100%);
+    font-size: 12pt;
+    font-style: italic;
 }
 .sound img.albumArt {
-	position: static;
-	display: block;
-	float: left;
-	left: 0;
-	width: 250px;
-	height: 250px;
-	margin-left: 15px;
+    position: static;
+    display: block;
+    float: left;
+    left: 0;
+    width: 250px;
+    height: 250px;
+    margin-left: 15px;
 }
 .sound .audio_player {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 .sound .soundMeta {
-	float: left;
-	width: 405px;
-	margin-left: 15px;
+    float: left;
+    width: 405px;
+    margin-left: 15px;
 }
 .sound .soundMeta ul {
-	margin-top: 15px;
-	font-size: 16pt;
-	line-height: 24px;
+    margin-top: 15px;
+    font-size: 16pt;
+    line-height: 24px;
 }
 
 /* VIDEO */
 .vid .headline {
-	padding: 0 !important;
+    padding: 0 !important;
 }
 .vid .caption a { color:#F42D33; }
 
 /* POST BASE */
 #posts .postBase {
-	padding: 12px 8px 0 0;
-	overflow:hidden;
-	font-style: normal;
+    padding: 12px 8px 0 0;
+    overflow:hidden;
+    font-style: normal;
 }
 .tags {
-	width: 470px;
-	float: left;
-	margin-bottom: 6px;
+    width: 470px;
+    float: left;
+    margin-bottom: 6px;
 }
 .tags li {
-	display: block;
-	float: left;
-	margin: 0 0 8px 16px;
-	font-family: Arial, helvetica, sans-serif;
+    display: block;
+    float: left;
+    margin: 0 0 8px 16px;
+    font-family: Arial, helvetica, sans-serif;
 }
 .tags li a {
-	font-size: 10pt;
-	color: #929292;
-	height: 16px;
-	background: #fff;
-	color: #000;
-	position: relative; 
-	display: block;
-	float: left;
-	padding: 0 6px 0 3px;
+    font-size: 10pt;
+    color: #929292;
+    height: 16px;
+    background: #fff;
+    color: #000;
+    position: relative; 
+    display: block;
+    float: left;
+    padding: 0 6px 0 3px;
 }
 .tags li a:before {
-	content: " "; 
-	display: block; 
-	width: 0; 
-	height: 0;
-	border-top: 8px solid transparent;
-	border-bottom: 8px solid transparent;
-	border-right: 8px solid #fff;
-	position: absolute;
-	margin-top: -8px;
-	top: 50%;
-	right: 100%;
-	z-index: 2; 
+    content: " "; 
+    display: block; 
+    width: 0; 
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #fff;
+    position: absolute;
+    margin-top: -8px;
+    top: 50%;
+    right: 100%;
+    z-index: 2; 
 }
 .tags li a:hover { background: #B4AFAF; color: white; }
 .tags li a:hover:before { border-right: 8px solid #B4AFAF; }
 .tags li a span { display: none; margin-left: -4px; }
 .postBase .source { 
-	font-family: Arial, helvetica, sans-serif;
-	font-size: 10pt;
-	display: block; 
-	float: right; 
-	margin-right: 14px;
-	line-height: 22px;
+    font-family: Arial, helvetica, sans-serif;
+    font-size: 10pt;
+    display: block; 
+    float: right; 
+    margin-right: 14px;
+    line-height: 22px;
 }
 
 /* PAGINATION */
 .pagination {
-	margin: 42px 0 30px 0;
-	width: 700px;
-	float: left;
-	text-align: center;
-	
-	font-size: 12pt;
+    margin: 42px 0 30px 0;
+    width: 700px;
+    float: left;
+    text-align: center;
+    
+    font-size: 12pt;
 }
 .pagination a {
-	@include box-bebe;
-	display: inline-block;
-	height: 20px;
-	line-height: 20px;
-	padding: 0 8px 0 8px;
-	position: relative;
-	text-decoration: none;
+    @include box-bebe;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 8px 0 8px;
+    position: relative;
+    text-decoration: none;
 }
 .nextPage::after {
-		content: " "; 
-		display: block; 
-		width: 0; 
-		height: 0;
-		border-top: 10px solid transparent;
-		border-bottom: 10px solid transparent;
-		border-left: 10px solid $box-background;
-		position: absolute;
-		margin-top: -10px;
-		top: 50%;
-		left: 100%;
-		z-index: 2; 
-	}
+        content: " "; 
+        display: block; 
+        width: 0; 
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid $box-background;
+        position: absolute;
+        margin-top: -10px;
+        top: 50%;
+        left: 100%;
+        z-index: 2; 
+    }
 .prevPage::before {
-		content: " "; 
-		display: block; 
-		width: 0; 
-		height: 0;
-		border-top: 10px solid transparent;
-		border-bottom: 10px solid transparent;
-		border-right: 10px solid $box-background;
-		position: absolute;
-		margin-top: -10px;
-		top: 50%;
-		right: 100%;
-		z-index: 2; 
-	}
+        content: " "; 
+        display: block; 
+        width: 0; 
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid $box-background;
+        position: absolute;
+        margin-top: -10px;
+        top: 50%;
+        right: 100%;
+        z-index: 2; 
+    }
 
 
 .answer .headline { 
