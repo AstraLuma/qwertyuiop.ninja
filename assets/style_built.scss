@@ -139,7 +139,7 @@ main {
         grid-template-rows: 60px auto;
         grid-template-columns: auto;
         margin: 0 auto;
-        max-width: 100vw;
+        // max-width: 100vw;
     }
 
     main {
@@ -148,7 +148,7 @@ main {
 
     article {
         max-width: 670px;
-        width: calc(100vw - 30px);
+        width: calc(100vw - 45px);
     }
 
 }
@@ -572,8 +572,7 @@ h1, h4 {
 /* PAGINATION */
 .pagination {
     margin: 42px 0 30px 0;
-    width: 700px;
-    float: left;
+    // width: 700px;
     text-align: center;
     
     font-size: 12pt;
