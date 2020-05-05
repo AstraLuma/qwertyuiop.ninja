@@ -21,7 +21,7 @@ Ok, so how do you build a project in a container on a remote system?
 First of all, the build script. This is surprisingly short for all the features it provides.
 
 ```python
-with Container('debian') as c:
+with Container('arm32v7/debian') as c:
     c.run(['apt-get', 'update', '-y'])
     c.run(['apt-get', 'install', '-y', 'git', 'libc-dev', 'gcc', 'g++', 'make', 'pkgconf'])
     c.run(['git', 'clone', 'https://github.com/viveris/uMTP-Responder.git', '/tmp/umtp'])
@@ -41,4 +41,75 @@ Ok, so how do I actually do the build? With SSH of course!
 3. Copy back the artifacts
 4. Add artifacts to the image
 
-TODO: the actual script doing the ssh builds
+The script I'm using goes like:
+
+```sh
+#!/bin/sh
+set -e
+
+HOST=$1
+
+TMP=$(ssh $HOST mktemp -d)
+
+scp buildscript.py $HOST:$TMP
+ssh $HOST buildahscript-py $TMP/buildscript.py
+scp $HOST:$TMP/{umtprd,gt.tar} .
+ssh $HOST rm -r $TMP
+```
+
+Just run the above stuff and you're done, right?
+
+Sure, if you're ok with a two-and-a-half build time.
+
+Ok, so first of all, I've only shown the build for uMTP-Responder. I'm also building gt and its dependency libusbgx.
+
+Second of all, pretty much all of the time is spent installing build dependencies. And most of that time is spent installing TeX-related things, which is a dependency of asciidoc, which is used by gt to build man pages. One easy way is to just patch out the manpage building. But that's no fun.
+
+So I'm going to spend the rest of this post talking about how I optimized this build.
+
+The first step is to move all your apt operations to a common image.
+
+```python
+with Container('arm32v7/debian') as c:
+    c.run(['apt-get', 'update', '-y'])
+    c.run(['apt-get', 'install', '-y', 'git', 'libc-dev', 'gcc', 'g++', 'make', 'pkgconf'])
+    img = c.commit()
+
+with Container(img):
+    c.run(['git', 'clone', 'https://github.com/viveris/uMTP-Responder.git', '/tmp/umtp'])
+    c.workdir = '/tmp/umtp'
+    c.run(['make', 'CFLAGS="-DUSE_SYSLOG"'])
+    c.copy_out('/tmp/umtp/umtprd', 'umtprd')
+```
+
+This will actually run slower because we're doing extra IO in the image/container churn, and IO on most Raspberry Pis are _slow_. But it also means we can cache the build image for reuse between runs.
+
+So how do we cache the image? We're going to use the buildah image store to keep them, and craft a special tag with the packages we installed into the package.
+
+```python
+import hashlib
+
+IMAGE_NAME = "gamebear-build"
+
+def get_debian_with_packages(baseimage, pkgs):
+    h = hashlib.sha256(' '.join(pkgs).encode('utf-8'))
+    tag = f"{IMAGE_NAME}:{h.hexdigest()}"
+
+    try:
+        return Image(tag)
+    except ImageNotFoundError:
+        with Container(baseimage) as c:
+            c.run(['apt-get', 'update', '-y'])
+            c.run(['apt-get', 'install', '-y', *pkgs])
+            img = c.commit()
+            img.add_tag(tag)
+            return img
+```
+
+To explain this:
+
+1. Make a tag name. We use a hash of the list of packages, partly to limit the size of the tag, partly because package names can contain characters disallowed in container names
+2. Look up the container
+3. Build if not available
+
+Left as an excercise to the reader is to apply a max age policy to cached images. (Try `Image.inspect()`.)
