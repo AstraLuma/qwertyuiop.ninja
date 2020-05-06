@@ -4,7 +4,7 @@ title: Gamebear 2: Building
 tags: ppb, gamebear, raspberry pi
 ---
 
-So, as part of [Gamebear](TODO), I want to use some software that's not part of the Raspbian package repositories, namely [uMTP-Responder](https://github.com/viveris/uMTP-Responder) and [gt](https://github.com/kopasiak/gt).
+So, as part of [Gamebear]({% post_url 2020-05-02-gamebear-01 %}), I want to use some software that's not part of the Raspbian package repositories, namely [uMTP-Responder](https://github.com/viveris/uMTP-Responder) and [gt](https://github.com/kopasiak/gt).
 
 I also want to be able to create fully-baked images on my laptop.
 
