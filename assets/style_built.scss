@@ -172,6 +172,10 @@ p { margin-top: 15px; }
 img { border: none; }
 a {color: inherit;}
 
+pre {
+    padding: 0.5em;
+    overflow: auto;
+}
 
 /* left column */
 header {
