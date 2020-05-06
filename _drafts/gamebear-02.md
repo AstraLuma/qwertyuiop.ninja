@@ -12,9 +12,7 @@ And I find cross compiling fiddly and complicated.
 
 So how do I conduct these builds?
 
-Well, I have a spare Raspberry Pi 3 I'm not really using. And I do "devops", so I would like to do my builds in clean, fresh containers.
-
-And I did write [this little project](https://buildahscript.github.io/) that was originally for more dynamic container building, but turns out is also pretty good for build systems. And I like containerized builds, so of course I'm going to look for excuses to use them.
+Well, I have a spare Raspberry Pi 3 I'm not really using. And I do "devops", so I would like to do my builds in clean, fresh containers. And I did write [this little project](https://buildahscript.github.io/) that was originally for more dynamic container building, but turns out is also pretty good for build systems.
 
 Ok, so how do you build a project in a container on a remote system?
 
@@ -32,14 +30,13 @@ with Container('arm32v7/debian') as c:
 
 Most of the hard work is being handled by buildahscript itself.
 
-I did look into creating a "quick and dirty CI" that would allow defining these build jobs via YAML. When I made a working prototype, I found that it didn't really reduce the size of the build definition any, made expressing certain things more awkward, and I also had this new project to debug. So I binned it.
+I did look into creating a "quick and dirty CI" that would allow defining these build jobs via YAML. When I made a working prototype, I found that it didn't really reduce the size of the build definition any, made expressing certain things more awkward, and now I had this new project to debug. So I binned it.
 
 Ok, so how do I actually do the build? With SSH of course!
 
 1. Copy the build script to the build pi
 2. Run the build
 3. Copy back the artifacts
-4. Add artifacts to the image
 
 The script I'm using goes like:
 
