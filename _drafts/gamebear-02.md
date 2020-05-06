@@ -81,9 +81,9 @@ with Container(img):
     c.copy_out('/tmp/umtp/umtprd', 'umtprd')
 ```
 
-This will actually run slower because we're doing extra IO in the image/container churn, and IO on most Raspberry Pis are _slow_. But it also means we can cache the build image for reuse between runs.
+This will actually run slower because we're doing extra IO in the image/container churn, and IO on many Raspberry Pis is _slow_. But it also means we can cache the build image for reuse between runs.
 
-So how do we cache the image? We're going to use the buildah image store to keep them, and craft a special tag with the packages we installed into the package.
+So how do we cache the image? We're going to use the buildah image store to keep them, and craft a special tag with the packages we installed into the image.
 
 ```python
 import hashlib
