@@ -175,7 +175,8 @@ with Container(img) as c:
     c.run(['cmake', '-DCMAKE_INSTALL_PREFIX=/usr/local/', './source/'])
     c.run(['make'])
     c.run(['make', 'install'])
-    c.run(['mv', '/usr/local/usr/share', '/usr/local/share'])  # https://github.com/kopasiak/gt/issues/15
+    c.run(['cp', '-R', '/usr/local/usr/share', '/usr/local'])  # https://github.com/kopasiak/gt/issues/15
+    c.run(['rm', '-R', '/usr/local/usr/share'])
     c.run(['tar', 'caf', '/tmp/gt.tar', '/usr/local'])
     c.copy_out('/tmp/gt.tar', output / 'gt.tar')
 ```
