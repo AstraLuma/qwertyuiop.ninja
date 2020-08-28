@@ -14,7 +14,7 @@ Note: I did this on a FreeBSD system, but nothing in here is FreeBSD-specific.
 
 Additional Note: You do have to do these in order.
 
-You can follow along with my [gist](https://gist.github.com/astronouth7303/a11ec7009278ad65b53e).
+You can follow along with my [gist](https://gist.github.com/AstraLuma/a11ec7009278ad65b53e).
 
 Step 0: Installation
 ====================
@@ -197,4 +197,4 @@ The other job just refreshes the Diffie-Helmen parameters we made in step 3. I h
 
 I have my jobs running once a week on different days. This is pretty much a personal preference.
 
-And that's it! Again, my complete files are on [gists](https://gist.github.com/astronouth7303/a11ec7009278ad65b53e).
+And that's it! Again, my complete files are on [gists](https://gist.github.com/AstraLuma/a11ec7009278ad65b53e).
