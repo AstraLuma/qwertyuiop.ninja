@@ -1,6 +1,6 @@
 ---
 layout: post-text
-title: "A PagerDuty Alaram Clock"
+title: "A PagerDuty Alarm Clock"
 tags: raspberry pi, pagerduty
 ---
 
@@ -53,3 +53,5 @@ need to code up a Snooze button or make a web page or anything.
 I'm almost kinda wondering if there's a market opportunity here. (Not for me, I
 don't know the first thing about shipping physical products. And frankly, I'd
 rather not.)
+
+One thing it doesn't actually do is tell time.
