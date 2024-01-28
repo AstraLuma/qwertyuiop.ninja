@@ -1,39 +1,45 @@
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ page.title }}</title>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page.title }}</title>
 
-        {% feed_meta %}
-        <link rel="icon" href="/assets/avatar.png"/>
-        <meta name="description" content="Good with a keyboard and fluent in gibberish"/>
-        
-        <link href='/assets/style_built.css' rel='stylesheet' type='text/css'>
-        <link href='/assets/syntax.css' rel='stylesheet' type='text/css'>
-        {% seo title=false %}
-</head>
+    {% feed_meta %}
+    <link rel="icon" href="/assets/avatar.png" />
+    <meta
+      name="description"
+      content="Good with a keyboard and fluent in gibberish"
+    />
 
-    <body>
-            
-        <header>
-            <div class="icons">
-                <a href="https://twitter.com/AstraLuma" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://github.com/AstraLuma" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://cybre.space/@astraluma" title="Fediverse"><i class="fab fa-mastodon"></i></a>
-            </div>
-            <section>{{site.description}}</section>
-            <section>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                </ul>
-            </section>
-            <div class="via-circle"></div>
-        </header>
+    <link href="/assets/style_built.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/syntax.css" rel="stylesheet" type="text/css" />
+    {% seo title=false %}
+  </head>
 
-        <main>
-        {{content}}
-        </main>
-    </body>
+  <body>
+    <header>
+      <div class="icons">
+        <a href="https://twitter.com/AstraLuma" title="Twitter"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a href="https://github.com/AstraLuma" title="GitHub"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="https://tacobelllabs.net/@astraluma" title="Fediverse"
+          ><i class="fab fa-mastodon"></i
+        ></a>
+      </div>
+      <section>{{site.description}}</section>
+      <section>
+        <ul>
+          <li><a href="/">Home</a></li>
+        </ul>
+      </section>
+      <div class="via-circle"></div>
+    </header>
+
+    <main>{{content}}</main>
+  </body>
 </html>
