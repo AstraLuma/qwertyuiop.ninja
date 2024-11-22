@@ -81,7 +81,7 @@ I only need a few brackets--one for the Pi and one for the camera.
 
 For the Pi, I settled on a custom variant of the [Display Mount Ender 3 S1 Pro with Raspberry PI 3 Case by 1h0m5s](https://www.printables.com/model/777751-display-mount-ender-3-s1-pro-with-raspberry-pi-3-c).
 
-"Variant"--none of the available versions are compatible with the Pi 4 with two inches of hat on top. And none of them seem to have sources (not that sources would do me much with this much work). So a more accurate description might be a custom screen bracket & Pi case, loosely inspired by 1h0m5s's work.
+"Variant"--none of the available versions are compatible with the Pi 4 with two inches of hat on top. And none of them seem to have sources (not that sources would do me much with this much work). And they all put the ethernet port in a weird direction. So a more accurate description might be a custom screen bracket & Pi case, loosely inspired by 1h0m5s's work.
 
 TODO: Camera arm
 
