@@ -63,6 +63,8 @@ So how does that compute integrate with the printer?
 
 For data, there's a [hardware serial port](https://github.com/Harrypulvirenti/KlipperConfigS1/wiki/UART-Connection), so let's use that.[^5]
 
+TODO: Two UARTs, [pinouts](https://pinout.xyz/pinout/uart), needs overlay
+
 @agmlego was generous enough so supply an appropriate relay board for the Pi to control the main power, so I'll wire that up.
 
 TODO: Power sense.
@@ -71,6 +73,31 @@ Part of @mtfurlan's design is two buttons and an indicator LED (integrated into 
 
 I'm going to be using actual connectors and cables for everything--no loose jumper wires.
 
+Pi Pins:
+* 5v/GND: 2/4
+* relay_button: 12 (GPIO18)
+* printer_sense: 18 (GPIO24)
+* relay: 7 (GPIO4)
+* pi_red: 14 (GPIO22)
+* pi_green: 13 (GPIO27)
+* pi_blue: 11 (GPIO17)
+* pi_button: 5 (GPIO3) (fixed)
+* Printer UART: 8/10 (GPIO14/15)
+* Screen 5v: Pi 5v
+* Screen UART: ???
+* Screen Encoder: 35/37 (GPIO19/GPIO26)
+* Screen Button: 33 (GPIO13)
+* Screen Beep: ???
+
+Pin sources:
+
+* https://technicallycompetent.com/octoprint-physical-buttons/
+* https://github.com/Harrypulvirenti/KlipperConfigS1/wiki/UART-Connection
+* https://github.com/RobRobM/DWIN_T5UIC1_LCD_E3S1/blob/main/README.md#wire-the-display
+
+Ribbon pinout (printer side):
+
+![printer ribbon pinout](https://github.com/RobRobM/DWIN_T5UIC1_LCD_E3S1/raw/main/images/Ender3S1_LCD_Board.JPG?raw=true)
 
 [^5]: There's also an [internal USB port](https://www.reddit.com/r/3Dprinting/comments/t5ohgq/ender3_s1_serialuart/), but I decided to skip the USB stack.
 
