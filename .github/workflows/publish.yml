@@ -58,5 +58,6 @@ jobs:
           domain: qwertyuiop.ninja
       - id: install-aws-cli
         uses: unfor19/install-aws-cli-action@v1
-      - run: |
+      - working-directory: ./_site
+        run: |
           aws s3 sync --delete . s3://${{steps.settings.outputs.bucket}}
