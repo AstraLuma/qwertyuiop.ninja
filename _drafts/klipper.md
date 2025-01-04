@@ -3,7 +3,7 @@ layout: post-text
 title: Ender 3 S1 and Klipper
 ---
 
-Earlier this year, MicroCenter had a sale on the Ender 3 S1. My girlfriend with a chronic 3D printing condition said that it was a decent printer for the price bracket.[^1] So I picked one up. It's proven to be helpful in many ways, and has enabled projects that would have previously involved road trips--I love visiting my girlfriend, but spending 4 hours driving every time I want to 3D print something is not how I want to spend my life.
+Some time last year, MicroCenter had a sale on the Ender 3 S1. My girlfriend with a chronic 3D printing condition said that it was a decent printer for the price bracket.[^1] So I picked one up. It's proven to be helpful in many ways, and has enabled projects that would have previously involved road trips--I love visiting my girlfriend, but spending 4 hours driving every time I want to 3D print something is not how I want to spend my life.
 
 As an example, the first major non-printer project I did successfully on this printer was a shield project for the lightsaber class I teach. I was able to design and print shield handle brackets on my own.[^2] Even being able to print prototypes and test fits is a big help.
 
@@ -42,19 +42,13 @@ Moonraker is only an API, and has two major frontends: Mainsail and Fluidd. Main
 
 Ok, so let's start with a Raspberry Pi 4.
 
-Let's give it a heatsink and fan. The [Geekworm 11mm heatsink](https://geekworm.com/products/p165-b)[^3] and the [Argon40 fan hat](https://argon40.com/products/argon-fan-hat) to start with. Except we're going to stack more boards on top of that fan, so let's use a [blower](https://www.amazon.com/dp/B08R9HB2XC) instead.
+Let's give it a heatsink and fan. The [Geekworm 11mm heatsink](https://geekworm.com/products/p165-b)[^3] and a [blower](https://www.amazon.com/dp/B08R9HB2XC) to direct air out the side.
 
 For a power supply, let's use a packaged 24v-5v DC-DC converter, like [this one](https://www.amazon.com/dp/B00J3MHRNO).
 
-@mtfurlan was kind enough to give me one of her OctoPrint IO boards ([Hardware GitHub](https://github.com/mtfurlan/um2-octoprint-breakout), [Software Blogpost](https://technicallycompetent.com/octoprint-physical-buttons/)). But I want more IO than that (namely, connectors to the front screen and driver board). Thankfully, it's a trivial board, so I'll build my own based on an [Adafruit Perma Proto Bonnet Mini Kit](https://www.adafruit.com/product/3203)[^4].
-
-@agmlego was also kind enough to send a Pi camera, case and ribbon, so I should use that, too.[^4.5]
+@mtfurlan was kind enough to give me one of her OctoPrint IO boards ([Hardware GitHub](https://github.com/mtfurlan/um2-octoprint-breakout), [Software Blogpost](https://technicallycompetent.com/octoprint-physical-buttons/)). But I want more IO than that (namely, connectors to the front screen and driver board). At first I thought this was going to be a trivial design I could just wire onto some Adafruit Perma Proto, but when I got to stacks four wires high, I decided maybe I (@agmlego) should [make my own](https://github.com/agmlego/um2-octoprint-breakout).
 
 [^3]: Do not use the included silpads, they are too thick and there are reports of people cracking their Pis. Use some PC thermal paste instead.
-
-[^4]: You could also use a [Adafruit Perma-Proto HAT for Pi Mini Kit](https://www.adafruit.com/product/2310), it was just out of stock when I ordered everything.
-
-[^4.5]: @agmlego did provide a bunch of the misc. hardware for this. All of it was because she bought extras for her own Ender 5 project.
 
 
 ### Electronics
@@ -67,9 +61,7 @@ TODO: Two UARTs, [pinouts](https://pinout.xyz/pinout/uart), needs overlay
 
 @agmlego was generous enough so supply an appropriate relay board for the Pi to control the main power, so I'll wire that up.
 
-TODO: Power sense.
-
-Part of @mtfurlan's design is two buttons and an indicator LED (integrated into one of the buttons), so I'll also provision for those.
+Part of @mtfurlan's design is two buttons and an indicator LED (integrated into one of the buttons), so I'll also provision for some of that.
 
 I'm going to be using actual connectors and cables for everything--no loose jumper wires.
 
@@ -104,13 +96,9 @@ Ribbon pinout (printer side):
 
 ### Mechanics
 
-I only need a few brackets--one for the Pi and one for the camera.
+I only need a bracket for the Raspberry Pi. I settled on a custom variant of the [Raspberry Pi case (model B+/2/3) with Ender 3 S1 mounting bracket by p1mrx](https://www.printables.com/model/514923-raspberry-pi-case-model-b23-with-ender-3-s1-mounti).
 
-For the Pi, I settled on a custom variant of the [Display Mount Ender 3 S1 Pro with Raspberry PI 3 Case by 1h0m5s](https://www.printables.com/model/777751-display-mount-ender-3-s1-pro-with-raspberry-pi-3-c).
-
-"Variant"--none of the available versions are compatible with the Pi 4 with two inches of hat on top. And none of them seem to have sources (not that sources would do me much with this much work). And they all put the ethernet port in a weird direction. So a more accurate description might be a custom screen bracket & Pi case, loosely inspired by 1h0m5s's work.
-
-TODO: Camera arm
+"Variant"--the original was for the Pi3, granted with hat space. While there were actual source files available, it looks like the actual Pi3 holding bit was a mesh imported from another project--bad for updating it to Pi4. So I ended up [drawing my own from scratch](https://www.printables.com/model/1090733-raspberry-pi-4-case-for-ender-3-s1-beta).
 
 
 ## Building it
