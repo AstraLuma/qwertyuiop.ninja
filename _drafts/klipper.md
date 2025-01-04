@@ -46,7 +46,7 @@ Let's give it a heatsink and fan. The [Geekworm 11mm heatsink](https://geekworm.
 
 For a power supply, let's use a packaged 24v-5v DC-DC converter, like [this one](https://www.amazon.com/dp/B00J3MHRNO).
 
-@mtfurlan was kind enough to give me one of her OctoPrint IO boards ([Hardware GitHub](https://github.com/mtfurlan/um2-octoprint-breakout), [Software Blogpost](https://technicallycompetent.com/octoprint-physical-buttons/)). But I want more IO than that (namely, connectors to the front screen and driver board). At first I thought this was going to be a trivial design I could just wire onto some Adafruit Perma Proto, but when I got to stacks four wires high, I decided maybe I (@agmlego) should [make my own](https://github.com/agmlego/um2-octoprint-breakout).
+@mtfurlan was kind enough to give me one of her OctoPrint IO boards ([Hardware GitHub](https://github.com/mtfurlan/um2-octoprint-breakout), [Software Blogpost](https://technicallycompetent.com/octoprint-physical-buttons/)). But I want more IO than that (namely, connectors to the front screen and driver board).
 
 [^3]: Do not use the included silpads, they are too thick and there are reports of people cracking their Pis. Use some PC thermal paste instead.
 
@@ -65,23 +65,7 @@ Part of @mtfurlan's design is two buttons and an indicator LED (integrated into 
 
 I'm going to be using actual connectors and cables for everything--no loose jumper wires.
 
-Pi Pins:
-* 5v/GND: 2/4
-* relay_button: 12 (GPIO18)
-* printer_sense: 18 (GPIO24)
-* relay: 7 (GPIO4)
-* pi_red: 14 (GPIO22)
-* pi_green: 13 (GPIO27)
-* pi_blue: 11 (GPIO17)
-* pi_button: 5 (GPIO3) (fixed)
-* Printer UART: 8/10 (GPIO14/15)
-* Screen 5v: Pi 5v
-* Screen UART: ???
-* Screen Encoder: 35/37 (GPIO19/GPIO26)
-* Screen Button: 33 (GPIO13)
-* Screen Beep: ???
-
-Pin sources:
+Some of the sources I'm using for pin assignments:
 
 * https://technicallycompetent.com/octoprint-physical-buttons/
 * https://github.com/Harrypulvirenti/KlipperConfigS1/wiki/UART-Connection
@@ -98,22 +82,46 @@ Ribbon pinout (printer side):
 
 I only need a bracket for the Raspberry Pi. I settled on a custom variant of the [Raspberry Pi case (model B+/2/3) with Ender 3 S1 mounting bracket by p1mrx](https://www.printables.com/model/514923-raspberry-pi-case-model-b23-with-ender-3-s1-mounti).
 
-"Variant"--the original was for the Pi3, granted with hat space. While there were actual source files available, it looks like the actual Pi3 holding bit was a mesh imported from another project--bad for updating it to Pi4. So I ended up [drawing my own from scratch](https://www.printables.com/model/1090733-raspberry-pi-4-case-for-ender-3-s1-beta).
-
 
 ## Building it
 
+### Bracket
+
+"Variant"--the original bracket by p1mrx was for the Pi3, granted with hat space. While there were actual source files available, it looks like the actual Pi3 holding bit was a mesh imported from another project--bad for updating it to Pi4. So I ended up [drawing my own from scratch](https://www.printables.com/model/1090733-raspberry-pi-4-case-for-ender-3-s1-beta).
+
+
 ### IO hat
+
+At first I thought the IO hat was going to be a trivial design I could just wire onto some Adafruit Perma Proto, but when I got to stacks four wires high, I decided maybe I (@agmlego) should [make my own](https://github.com/agmlego/um2-octoprint-breakout).
+
+Pinout:
+
+* GPIO0/1: Hat ID EEPROM
+* GPIO3: Pi power button
+* GPIO4/5: UART to display
+* GPIO10/11: I2C for additional sensors
+* GPIO12: Display knob press
+* GPIO13: Beeper
+* GPIO14/15 (TXD/RXD): UART to printer
+* GPIO17: Blue LED
+* GPIO18: Pi blower PWM
+* GPIO19/26: Display knob encoder[^10]
+* GPIO22: Printer power sense
+* GPIO23: Printer power relay
+* GPIO24: Green LED
+* GPIO27: Red LED
 
 TODO: Schematic, photos
 
+
+[^10]: These are pins 35 & 37, which makes board routing easier
+
+
 ### Raspberry Pi Stackup
 
+(The specific dimensions are vestigial from when the design included the Argon40 fan hat. Which proved to be a weird implementation and made pin assignments markedly harder.)
+
 TODO: Photos, link to agm's rim
-
-### Bracket
-
-TODO: Photos, link to printable
 
 ### Electronics
 
@@ -121,8 +129,11 @@ TODO: Photos
 
 ### Software
 
-TODO
+https://docs-os.mainsail.xyz/getting-started
 
+https://github.com/Klipper3d/klipper/blob/master/config/printer-creality-ender3-s1-2021.cfg
+
+STM32F401
 
 ## Results
 
