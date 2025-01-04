@@ -113,6 +113,7 @@ Pinout:
 
 TODO: Schematic, photos
 
+TODO: Device tree aside
 
 [^10]: These are pins 35 & 37, which makes board routing easier
 
@@ -134,6 +135,14 @@ https://docs-os.mainsail.xyz/getting-started
 https://github.com/Klipper3d/klipper/blob/master/config/printer-creality-ender3-s1-2021.cfg
 
 STM32F401
+
+### Slicer
+
+Orca Slicer
+
+Put in printer hostname
+
+Switch gcode from marlin to klipper
 
 ## Results
 
