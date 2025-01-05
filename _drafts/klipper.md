@@ -136,6 +136,8 @@ https://github.com/Klipper3d/klipper/blob/master/config/printer-creality-ender3-
 
 STM32F401
 
+https://gist.github.com/AstraLuma/fe803b858e34834b4d2317e671df2415
+
 ### Slicer
 
 Orca Slicer
@@ -145,6 +147,8 @@ Put in printer hostname
 Switch gcode from marlin to klipper
 
 Adjust screws
+
+z probe offset calibration
 
 Tune temperature PID
 
