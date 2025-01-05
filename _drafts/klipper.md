@@ -144,6 +144,12 @@ Put in printer hostname
 
 Switch gcode from marlin to klipper
 
+Adjust screws
+
+Tune temperature PID
+
+Flow rate and pressure advance
+
 ## Results
 
 TODO: Did it work?
