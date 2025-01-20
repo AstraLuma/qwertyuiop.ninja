@@ -169,7 +169,13 @@ body {
 }
 
 p { margin-top: 15px; }
-img { border: none; }
+img {
+    border: none;
+}
+# Jekyll top-level images
+p > img:only-child {
+    max-width: 100%;
+}
 a {color: inherit;}
 
 pre {
