@@ -16,7 +16,7 @@ So my design requirements are:
 * Minimize loopbacks and weird dangling cables--I want the final product to be tidy and maybe look stock[^2.5]
 
 
-[^1]: That modifier clause boy is doing some heavy lifting there. She might have paid twenty times what I did for her Bambu X1C, but boy howdy does it run sprints around my Ender in a plethora of ways.
+[^1]: That modifier clause sure is doing some heavy lifting there. She might have paid twenty times what I did for her Bambu X1C, but boy howdy does it run sprints around my Ender in a plethora of ways.
 
 [^2]: That girlfriend helped a lot with the wooden shield blanks, and she did design and print the Mk2 version of the handle. The work she did with the straps turned out to be completely useless, though.
 
@@ -57,11 +57,9 @@ So how does that compute integrate with the printer?
 
 For data, there's a [hardware serial port](https://github.com/Harrypulvirenti/KlipperConfigS1/wiki/UART-Connection), so let's use that.[^5]
 
-TODO: Two UARTs, [pinouts](https://pinout.xyz/pinout/uart), needs overlay
+Putting a relay into the printer's power means we have a low(er) power mode.
 
-@agmlego was generous enough so supply an appropriate relay board for the Pi to control the main power, so I'll wire that up.
-
-Part of @mtfurlan's design is two buttons and an indicator LED (integrated into one of the buttons), so I'll also provision for some of that.
+The Raspberry Pi 4 has a `WAKE_ON_GPIO` feature on GPIO3, so lets hook that up to a front-panel button.
 
 I'm going to be using actual connectors and cables for everything--no loose jumper wires.
 
@@ -94,7 +92,7 @@ I only need a bracket for the Raspberry Pi. I settled on a custom variant of the
 
 At first I thought the IO hat was going to be a trivial design I could just wire onto some Adafruit Perma Proto, but when I got to stacks four wires high, I decided maybe I (@agmlego) should [make my own](https://github.com/agmlego/um2-octoprint-breakout).
 
-Pinout:
+We ended up with a pinout:
 
 * GPIO0/1: Hat ID EEPROM
 * GPIO3: Pi power button
@@ -111,12 +109,37 @@ Pinout:
 * GPIO24: Green LED
 * GPIO27: Red LED
 
-TODO: Schematic, photos
+In case you didn't notice, this is a _lot_ of signals--it's using two-thirds of the GPIO, and no[^11] peripheral is on its default pins. And just for spice, we're also using some non-default peripherals.
 
-TODO: Device tree aside
+When we looked up the HAT+ ID EEPROM ([PDF](https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf), Ch3), we decided it would just be easier to share the `config.txt` block:
 
-[^10]: These are pins 35 & 37, which makes board routing easier
+```
+# Power button
+dtoverlay=gpio-shutdown
+# Automated blower control
+dtoverlay=pwm-gpio-fan,fan_gpio=18
+# Printer power
+gpio=23=op,dl
+# LEDs
+dtoverlay=gpio-led,gpio=17,label=blue,trigger=actpwr
+dtoverlay=gpio-led,gpio=24,label=green
+dtoverlay=gpio-led,gpio=27,label=red
+# Display controls
+dtoverlay=gpio-key,gpio=12,label=knobpress,keycode=256
+dtoverlay=rotary-encoder,pin_a=19,pin_b=26,relative_axis=1
+# Display UART
+dtoverlay=uart3
+# Beeper
+gpio=13=op,dl
+# Power sense
+gpio=22=ip,np
+# I2C
+dtoverlay=i2c5,pins_10_11=1,baudrate=400000
+```
 
+[^10]: These are pins 35 & 37, which makes board routing easier.
+
+[^11]: Fan PWM is still on GPIO18, but that's it.
 
 ### Raspberry Pi Stackup
 
@@ -124,36 +147,56 @@ TODO: Device tree aside
 
 TODO: Photos, link to agm's rim
 
+
 ### Electronics
 
 TODO: Photos
 
+
 ### Software
 
-https://docs-os.mainsail.xyz/getting-started
+Configuring Klipper, Moonraker, and Mainsail was pretty much standard.
 
-https://github.com/Klipper3d/klipper/blob/master/config/printer-creality-ender3-s1-2021.cfg
+I grabbed MainsailOS and followed the [getting started](https://docs-os.mainsail.xyz/getting-started). The [vendor `printer.cfg`](https://github.com/Klipper3d/klipper/blob/master/config/printer-creality-ender3-s1-2021.cfg) was fine. (Be sure to read the head, both with regard to the specific microcontroller, and the use of hardware serial.) (Astra: Yours is STM32F401, and you did need to use `STM32F4_UPDATE`.) 
 
-STM32F401
+I've uploaded my specific configs as [a gist](https://gist.github.com/AstraLuma/fe803b858e34834b4d2317e671df2415). I will specifically call out my power section:
 
-https://gist.github.com/AstraLuma/fe803b858e34834b4d2317e671df2415
+```
+[power printer]
+type: gpio
+pin: gpio23
+initial_state: off
+restart_klipper_when_powered: True
+off_when_shutdown: True
+off_when_shutdown_delay: 5
+on_when_job_queued: True
+locked_while_printing: True
+```
+
 
 ### Slicer
 
-Orca Slicer
+I use OrcaSlicer, and it largely works as expected?
 
-Put in printer hostname
+1. Put in the printer hostname, and everything will just work
+2. Switch gcode dialect from marlin to klipper
+3. Do your calibrations
 
-Switch gcode from marlin to klipper
 
-Adjust screws
+### Calibration
 
-z probe offset calibration
+So much! Here's some of what I did:
 
-Tune temperature PID
+* Bed levelling screw adjustment
+* Z probe offset calibration
+* Heater PID calibration
+* Flow rate and pressure advance
 
-Flow rate and pressure advance
+Everything except the last can be done through Mainsail, and most of them it has nice wizards for! The last is an Orca calibration.
+
+Bed levelling turned out to be a bit of an ordeal to figure out. Do your z probe calibration first, and you might need to start by moving your bed the lowest it'll go. (For me, Klipper would start about several millimeters above the bed, but I hadn't realized my z probe offset was wildly off until I tried a few prints. I suggest doing your z probe calibration before bed levelling.)
+
 
 ## Results
 
-TODO: Did it work?
+It was shockingly easy to get to moving and squriting. If I had done some proper prototyping, I could have gotten this done in a day. Very thankfully, the custom hat needed no revisions.
