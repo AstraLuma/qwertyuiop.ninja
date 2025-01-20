@@ -20,10 +20,6 @@ defaults:
 - values:
     articleclass: text
 
-twitter:
-  username: astraluma
-author:
-  twitter: astraluma
 social:
   links:
     # - https://twitter.com/astraluma
