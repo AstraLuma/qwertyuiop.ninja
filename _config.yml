@@ -15,7 +15,7 @@ description: Good with a keyboard and fluent in gibberish
 author:
   name: Jamie
   email: jamie@ivyleav.es
-  uri: http://astraluma.com/
+  # uri: http://astraluma.com/
 defaults:
 - values:
     articleclass: text
@@ -26,5 +26,5 @@ author:
   twitter: astraluma
 social:
   links:
-    - https://twitter.com/astraluma
+    # - https://twitter.com/astraluma
 logo: /assets/avatar.png
