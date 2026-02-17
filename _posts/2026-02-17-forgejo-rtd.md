@@ -2,6 +2,7 @@
 layout: post-text
 title: Read the Docs and Forgejo/Codeberg
 tags: docs, forgejo, devops
+excerpt_separator: <!--more-->
 ---
 
 Read the Docs and Sphinx? Really good. 10/10. Recommend for everything.
@@ -11,6 +12,8 @@ GitHub? In the Fucking Around phase.
 Codeberg? Good enough.
 
 So let's glue some things together.
+
+<!--more-->
 
 ## With more words
 
