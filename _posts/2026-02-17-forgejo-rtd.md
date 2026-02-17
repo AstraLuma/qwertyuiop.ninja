@@ -21,7 +21,7 @@ Microsoft/GitHub is making unpleasant and distasteful choices, and I would like 
 
 I really like using Read the Docs. (Even with my own [Teahouse Hosting](https://teahouse.cafe/), RTD has value-add.) But it doesn't (yet) have a native integration with Forgejo.
 
-But! I recently published [Handtruck](https://pypi.org/project/handtruck) and its [docs](https://handtruck.readthedocs.io/) from Codeberg, so let's discuss out.
+But! I recently published [Handtruck](https://pypi.org/project/handtruck) and its [docs](https://handtruck.readthedocs.io/) from Codeberg, so let's discuss how.
 
 ### On Forgejo & Codeberg
 
