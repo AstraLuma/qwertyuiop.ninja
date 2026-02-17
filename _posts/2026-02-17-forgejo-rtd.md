@@ -20,6 +20,18 @@ I really like using Read the Docs. (Even with my own [Teahouse Hosting](https://
 
 But! I recently published [Handtruck](https://pypi.org/project/handtruck) and its [docs](https://handtruck.readthedocs.io/) from Codeberg, so let's discuss out.
 
+### On Forgejo & Codeberg
+
+For those that aren't familiar:
+
+A "forge" is a code host, usually also offering issue tracking, code review, CI/CD, and other features needed to develop software. GitHub, BitBucket, GitLab, sourcehut, etc.
+
+[Forgejo](https://forgejo.org/) is open source forge software. It was forked from Gitea (which was forked from Gogs), and is lighter weight than other forge options. There are many Forgejo instances.
+
+[Codeberg](https://codeberg.org/) is a non-profit organization and managed Forgejo instance, focusing exclusively on supporting open source.
+
+While this blog post documents what I did on Codeberg, I believe it'll work with minimal modification on other Forgejo instances.
+
 ## Preparing the Repo
 
 You still need a [`.readthedocs.yaml`](https://docs.readthedocs.io/en/stable/config-file/v2.html) inside your repo. The usual versions will work.
