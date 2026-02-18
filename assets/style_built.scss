@@ -28,11 +28,6 @@ $post-video: #F42D33;
 $body: 'ge_geek', Arial, helvetica, sans-serif;
 $details: Arial, Helvetica, sans-serif;
 
-$fa-font-path: "/assets/fontawesome/webfonts";
-@import "fontawesome.scss";
-@import "brands.scss";
-@import "solid.scss";
-
 @font-face {
     font-family: 'ge_geek';
     src: url(/assets/fonts/ge_geek-bold.woff) format('woff');
