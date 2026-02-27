@@ -66,6 +66,6 @@ I am concerned that wide adoption of AI will lead to an overall decline in the q
 
 Software is no longer a weird hobby of society--it is as critical as bridges. We carry memes, relationships, medical care, and well being.
 
-And we must no ignore the potential harms that brings with.
+And we must not ignore the potential harms that brings with.
 
 Software Development is Engineering. And it's time we took that seriously.
