@@ -42,7 +42,7 @@ Engineering is the construction and maintenance of the superstructure of society
 
 Computers have been part of this ever since governments started using them to analyze demographics and developing policy based on those answers. Since then, software has moved so far beyond simple databases. All of business depends on software in every aspect. Basically everything that moves has a blob of firmware. An uncountable amount of communications are transit through software. Entire relationships exist only because software connected distant people.
 
-Software is critical to society; it is part of the superstructure. Software devlopers create and maintain that superstructure.
+Software is critical to society; it is part of the superstructure. Software developers create and maintain that superstructure.
 
 
 ## The Collision
