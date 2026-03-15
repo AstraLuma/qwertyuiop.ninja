@@ -24,6 +24,7 @@ start-draft TITLE:
   excerpt_separator: <!--more-->
   ---
   EOF
+  echo Draft created at _drafts/{{TITLE}}.md
 
 # Move a draft to publish, using today's date
 publish-draft TITLE:
