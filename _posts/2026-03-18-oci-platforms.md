@@ -24,7 +24,7 @@ So if you check the buildx CLI argument documentation, specifically [`docker bui
 
 And if you go check the [containerd source code](https://github.com/containerd/containerd/blob/v1.4.3/platforms/platforms.go#L63), you'll see it says some things about slashes but that the values ultimately come from GOARCH and GOOS.
 
-And then if you go searching, you might [the go build instructions](https://go.dev/doc/install/source#environment) which include the list of valid values Architecture, OS, & Variant, as well as the valid combinations.
+And then if you go searching, you might find [the go build instructions](https://go.dev/doc/install/source#environment) which include the list of valid values for Architecture, OS, & Variant, as well as the valid combinations.
 
 The basic format is `<OS>/<ARCH>` or `<OS>/<ARCH>/<VARIANT>`, but many inputs will accept just `<OS>` or `<ARCH>`.
 
