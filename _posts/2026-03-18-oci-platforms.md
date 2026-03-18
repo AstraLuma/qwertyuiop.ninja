@@ -13,7 +13,7 @@ Nobody actually defines what the container platform strings are, and how they ov
 
 Part of the container specification is the idea of "platforms"--operating system and CPU architecture in a neat little package. They show up in a bunch of places if you go looking: `docker run` has a `--platform`, you can say `FROM --platform` in your Dockerfile (in buildx), the docker github actions often have `platforms` inputs/outputs, etc.
 
-It's also very common to install qemu to allow transparent (if not slow) cross-platform container builder, either through a system package (as I've [discussed]({% post_url 2020-05-18-gamebear-25 %}) [before]({% post_url 2026-03-16-codeberg-runner %})), or as a CI/CD step (eg [`docker/setup-qemu-action`](github.com/docker/setup-qemu-action))
+It's also very common to install qemu to allow transparent (if not slow) cross-platform container building, either through a system package (as I've [discussed]({% post_url 2020-05-18-gamebear-25 %}) [before]({% post_url 2026-03-16-codeberg-runner %})), or as a CI/CD step (eg [`docker/setup-qemu-action`](https://github.com/docker/setup-qemu-action)).
 
 However, none of the documentation actually tells you what these strings are, so you're left wondering what `linux/amd64/v3` is and should you build it separately.
 
@@ -34,7 +34,7 @@ The basic format is `<OS>/<ARCH>` or `<OS>/<ARCH>/<VARIANT>`, but many inputs wi
 The main part of the platform is `os/arch`, which describe the OS and CPU the container is valid for. I've made a lovely table of which ones are available and where they're valid.
 
 | OS          | `386` | `amd64` | `arm` | `arm64` | `loong64` | `mips` | `mips64` | `mips64le` | `mipsle` | `ppc64` | `ppc64le` | `riscv64` | `s390x` | `wasm`  
-| ----------- | ----- | ------- | ----- | ------- | --------- | ------ | -------- | ---------- | -------- | ------- | --------- | --------- | ------- | ------
+| ----------- |:-----:|:-------:|:-----:|:-------:|:---------:|:------:|:--------:|:----------:|:--------:|:-------:|:---------:|:---------:|:-------:|:------:
 | `aix`       |       |         |       |         |           |        |          |            |          | ✅      |           |           |         |
 | `android`   | ✅    | ✅      | ✅    | ✅      |           |        |          |            |          |         |           |           |         |
 | `darwin`    |       | ✅      |       | ✅      |           |        |          |            |          |         |           |           |         |
