@@ -40,7 +40,9 @@ Pretty much any always-on, always-connected computer will do it. Ideally, it sho
 
 It needs to run Linux with Docker. The distro doesn't matter.
 
-Note that each runner can only be registered to one scope--a user, an org, or a repo. If you want multiple scopes, you will need multiple runners, and adjust these instructions to handle that.
+~~Note that each runner can only be registered to one scope--a user, an org, or a repo. If you want multiple scopes, you will need multiple runners, and adjust these instructions to handle that.~~
+
+UPDATE (2026-04-16): As of Forgejo v15 (Runner v12.8), runners can have multiple connections: any number of instances and scopes.
 
 You should read the [Forgejo docs](https://forgejo.org/docs/next/admin/actions/runner-installation/) first--there's a process to this, and this blog post does not discuss the entire process, just how I differed from it.
 
