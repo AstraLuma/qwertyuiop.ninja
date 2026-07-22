@@ -6,11 +6,13 @@ set windows-powershell := true
 
 # Install jekyll and friends
 install:
-  bundle install
+  asdf plugin add ruby
+  asdf install
+  asdf exec bundle install
 
 # Run dev server
 serve:
-  bundle exec jekyll serve --watch --drafts --unpublished --future --open-url -P 0 --livereload
+  asdf exec bundle exec jekyll serve --watch --drafts --unpublished --future --open-url -P 0 --livereload
 
 # Create a draft from a template
 [script]
