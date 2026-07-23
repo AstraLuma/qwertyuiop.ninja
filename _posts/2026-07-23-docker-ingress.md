@@ -6,13 +6,14 @@ excerpt_separator: <!--more-->
 date: 2026-07-23 12:00:01
 ---
 
-<!--more-->
-
 Some things I like:
 
 * Caddy
 * Docker (well, containers at any rate)
 * Having a little box of blinking lights in my basement
+* Running my own services for personal use
+
+<!--more-->
 
 Part of what I need to do to run services at home is what's called "ingress":
 
