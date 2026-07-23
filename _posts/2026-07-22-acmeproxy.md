@@ -19,7 +19,7 @@ Requirements:
 
 ## Why not Caddy's ACME server?
 
-It seemingly doesn't do any kind of proxying or cert handoff or whatever. It handles the request and signs the certificates using a local root.
+Caddy includes [an ACME server](https://caddyserver.com/docs/caddyfile/directives/acme_server) that's quite happy to issue certs. However, this will only issue certificates from a local root CA available to Caddy; I could not find a way to have Caddy proxy the request or perform a secondary request or otherwise not issue the cert itself.
 
 
 ## Background
