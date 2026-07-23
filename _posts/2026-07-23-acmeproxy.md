@@ -3,7 +3,7 @@ layout: post-text
 title: Acmeproxy for Fun and Villainy
 tags: homelab, caddy
 excerpt_separator: <!--more-->
-date: 2026-07-22 12:00:02
+date: 2026-07-23 12:00:02
 ---
 
 I would like to use TLS on internal servers on a bunch of boxes without giving everything DNS admin credentials.
@@ -64,7 +64,7 @@ Caddy needs 3 plugins:
 * `github.com/caddy-dns/acmeproxy` is the proxy client
   * Not strictly necessary on this server, but probably good to include
 
-You can run this using a standard compose (eg, [Caddy's recommendation](https://caddyserver.com/docs/running#docker-compose) or my [Caddy as ingress](/2026/07/22/docker-ingress.html)).
+You can run this using a standard compose (eg, [Caddy's recommendation](https://caddyserver.com/docs/running#docker-compose) or my [Caddy as ingress](/2026/07/23/docker-ingress.html)).
 
 The tricky bit becomes the Caddyfile:
 

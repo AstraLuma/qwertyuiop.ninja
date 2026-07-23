@@ -3,7 +3,7 @@ layout: post-text
 title: Docker Ingress with Caddy
 tags: homelab, docker, caddy
 excerpt_separator: <!--more-->
-date: 2026-07-22 12:00:01
+date: 2026-07-23 12:00:01
 ---
 
 <!--more-->
@@ -81,7 +81,7 @@ VOLUME /data/caddy
 
 I do recommend just doing this from the get-go: You need to compile caddy to install any plugins, and any sufficiently advanced setup will have non-standard plugins.
 
-As for the acmeproxy plugin I'm using, see [my post on acmeproxy](/2026/07/22/acmeproxy.html).
+As for the acmeproxy plugin I'm using, see [my post on acmeproxy](/2026/07/23/acmeproxy.html).
 
 The one thing you may want to change is that I'm including the Caddyfile in the image build. You may not want to do this, in which case, add a bind mount to the volumes in the above compose file. (Tip: Don't bind mount the file directly, a bunch of editors will break that. Create a subdirectory and bind mount that.)
 
